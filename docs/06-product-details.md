@@ -2,15 +2,15 @@
 
 ## Checklist
 
-- [ ] Fetch product data from `GET /api/products/:id`
-- [ ] Build product image display (placeholder area)
-- [ ] Build product info section (name, price, rating, description)
-- [ ] Add size selector (toggle group)
-- [ ] Add color selector (clickable swatches)
-- [ ] Add "Add to Cart" button
-- [ ] Add breadcrumb navigation
-- [ ] Handle loading and 404 states
-- [ ] Verify desktop layout looks good (desktop-only, no responsive needed)
+- [x] Fetch product data from `GET /api/products/:id`
+- [x] Build product image display (placeholder area)
+- [x] Build product info section (name, price, rating, description)
+- [x] Add size selector (toggle group)
+- [x] Add color selector (clickable swatches)
+- [x] Add "Add to Cart" button
+- [x] Add breadcrumb navigation
+- [x] Handle loading and 404 states
+- [x] Verify desktop layout looks good (desktop-only, no responsive needed)
 
 ## Details
 
