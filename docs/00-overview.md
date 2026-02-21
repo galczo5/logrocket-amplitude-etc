@@ -26,6 +26,8 @@ alert, badge, breadcrumb, button, card, carousel, checkbox, dialog, drawer, inpu
 | Product Details | `/products/:id` | Single product view with size/color picker |
 | Checkout | `/checkout` | Cart summary + shipping form |
 | Payment | `/checkout/payment` | Payment form + order confirmation |
+| About | `/about` | App description and purpose (demo for user monitoring tools) |
+| Profile | `/profile` | Logged-in user details and order history |
 
 ## Implementation Stages
 
@@ -39,3 +41,5 @@ alert, badge, breadcrumb, button, card, carousel, checkbox, dialog, drawer, inpu
 | 6 | Product Details Page | [06-product-details.md](./06-product-details.md) |
 | 7 | Cart & Checkout | [07-checkout.md](./07-checkout.md) |
 | 8 | Payment | [08-payment.md](./08-payment.md) |
+| 10 | About Page | [10-about.md](./10-about.md) |
+| 11 | User Profile Page | [11-profile.md](./11-profile.md) |
