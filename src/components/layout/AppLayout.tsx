@@ -1,6 +1,7 @@
 import { Link, Outlet, useLocation } from "react-router";
-import { ShoppingCartIcon, UserIcon } from "lucide-react";
+import { ShoppingCartIcon, UserIcon, LogOutIcon } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -8,9 +9,11 @@ import {
   NavigationMenuLink,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
+import { useAuth } from "@/context/AuthContext";
 
 export default function AppLayout() {
   const location = useLocation();
+  const { isAuthenticated, user, logout } = useAuth();
 
   return (
     <div className="min-h-screen w-screen flex flex-col">
@@ -52,13 +55,30 @@ export default function AppLayout() {
                 0
               </Badge>
             </Link>
-            <Link
-              to="/login"
-              className="flex items-center gap-1.5 text-sm font-medium px-3 py-1.5 rounded-md hover:bg-accent"
-            >
-              <UserIcon className="size-4" />
-              Login
-            </Link>
+
+            {isAuthenticated ? (
+              <div className="flex items-center gap-2">
+                <span className="text-sm font-medium">{user?.name}</span>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={logout}
+                  className="gap-1.5"
+                >
+                  <LogOutIcon className="size-4" />
+                  Logout
+                </Button>
+              </div>
+            ) : (
+              <Link
+                to="/login"
+                state={{ from: location.pathname }}
+                className="flex items-center gap-1.5 text-sm font-medium px-3 py-1.5 rounded-md hover:bg-accent"
+              >
+                <UserIcon className="size-4" />
+                Sign In
+              </Link>
+            )}
           </div>
         </div>
       </header>

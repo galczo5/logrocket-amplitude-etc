@@ -2,14 +2,14 @@
 
 ## Checklist
 
-- [ ] Create `AuthContext` with React context + provider
-- [ ] Implement login/logout functions in the context
-- [ ] Build the Login page UI with email and password fields
-- [ ] Connect login form to `POST /api/auth/login`
-- [ ] Store auth state (user + token) in localStorage for persistence
-- [ ] Update header to show user name when logged in / Login link when not
-- [ ] Add logout functionality
-- [ ] Redirect to previous page after login (or home)
+- [x] Create `AuthContext` with React context + provider
+- [x] Implement login/logout functions in the context
+- [x] Build the Login page UI with email and password fields
+- [x] Connect login form to `POST /api/auth/login`
+- [x] Store auth state (user + token) in localStorage for persistence
+- [x] Update header to show user name when logged in / Login link when not
+- [x] Add logout functionality
+- [x] Redirect to previous page after login (or home)
 
 ## Details
 
