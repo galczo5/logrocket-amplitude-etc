@@ -2,14 +2,14 @@
 
 ## Checklist
 
-- [ ] Build payment form (card number, expiry, CVC, cardholder name) prefilled with mock data
-- [ ] Add payment form validation
-- [ ] Show order summary (read-only) alongside payment form
-- [ ] Implement "Place Order" submission to `POST /api/orders`
-- [ ] Build order confirmation view with order ID and details
-- [ ] Clear cart after successful order
-- [ ] Add progress indicator across checkout steps
-- [ ] Handle error states
+- [x] Build payment form (card number, expiry, CVC, cardholder name) prefilled with mock data
+- [x] Add payment form validation
+- [x] Show order summary (read-only) alongside payment form
+- [x] Implement "Place Order" submission to `POST /api/orders`
+- [x] Build order confirmation view with order ID and details
+- [x] Clear cart after successful order
+- [x] Add progress indicator across checkout steps
+- [x] Handle error states
 
 ## Details
 

@@ -101,6 +101,7 @@ export default function CheckoutPage() {
 
   return (
     <div className="px-8 py-8 max-w-6xl mx-auto">
+      <CheckoutProgress currentStep={2} />
       <h1 className="text-2xl font-bold mb-8">Checkout</h1>
 
       <div className="grid grid-cols-[1fr_360px] gap-8 items-start">
@@ -240,6 +241,53 @@ export default function CheckoutPage() {
           </CardContent>
         </Card>
       </div>
+    </div>
+  );
+}
+
+export function CheckoutProgress({ currentStep }: { currentStep: 1 | 2 | 3 }) {
+  const steps = [
+    { n: 1, label: "Cart Review" },
+    { n: 2, label: "Shipping" },
+    { n: 3, label: "Payment" },
+  ];
+  return (
+    <div className="flex items-center gap-2 mb-8">
+      {steps.map((step, i) => (
+        <div key={step.n} className="flex items-center gap-2">
+          <div className="flex items-center gap-2">
+            <div
+              className={`size-7 rounded-full flex items-center justify-center text-xs font-semibold border-2 ${
+                step.n < currentStep
+                  ? "bg-primary border-primary text-primary-foreground"
+                  : step.n === currentStep
+                  ? "border-primary text-primary"
+                  : "border-muted-foreground/30 text-muted-foreground/50"
+              }`}
+            >
+              {step.n < currentStep ? "✓" : step.n}
+            </div>
+            <span
+              className={`text-sm ${
+                step.n === currentStep
+                  ? "font-semibold text-foreground"
+                  : step.n < currentStep
+                  ? "text-muted-foreground"
+                  : "text-muted-foreground/50"
+              }`}
+            >
+              {step.label}
+            </span>
+          </div>
+          {i < steps.length - 1 && (
+            <div
+              className={`h-px w-8 ${
+                step.n < currentStep ? "bg-primary" : "bg-muted-foreground/20"
+              }`}
+            />
+          )}
+        </div>
+      ))}
     </div>
   );
 }
