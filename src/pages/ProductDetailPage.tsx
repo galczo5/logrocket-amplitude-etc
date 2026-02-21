@@ -16,6 +16,7 @@ import { Spinner } from "@/components/ui/spinner";
 import { Toggle } from "@/components/ui/toggle";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { api } from "@/lib/api";
+import { useCart } from "@/context/CartContext";
 import type { Product, Color } from "@/types/product";
 
 function formatPrice(cents: number) {
@@ -25,6 +26,7 @@ function formatPrice(cents: number) {
 export default function ProductDetailPage() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const { addItem } = useCart();
 
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
@@ -59,7 +61,14 @@ export default function ProductDetailPage() {
       return;
     }
     setValidationMsg("");
-    // Cart context will be wired in Stage 7
+    addItem({
+      productId: product!.id,
+      name: product!.name,
+      price: product!.price,
+      size: selectedSize,
+      color: selectedColor.name,
+      image: product!.image,
+    });
     setAddedMsg(true);
     setTimeout(() => setAddedMsg(false), 3000);
   }

@@ -2,15 +2,15 @@
 
 ## Checklist
 
-- [ ] Create `CartContext` with React context + provider
-- [ ] Implement cart operations: add, remove, update quantity, clear
-- [ ] Persist cart to localStorage
-- [ ] Update header cart icon with item count badge
-- [ ] Build checkout page with cart summary
-- [ ] Build shipping information form
-- [ ] Add form validation for shipping fields
-- [ ] Add "Proceed to Payment" button that navigates to payment page
-- [ ] Handle empty cart state
+- [x] Create `CartContext` with React context + provider
+- [x] Implement cart operations: add, remove, update quantity, clear
+- [x] Persist cart to localStorage
+- [x] Update header cart icon with item count badge
+- [x] Build checkout page with cart summary
+- [x] Build shipping information form
+- [x] Add form validation for shipping fields
+- [x] Add "Proceed to Payment" button that navigates to payment page
+- [x] Handle empty cart state
 
 ## Details
 

@@ -10,10 +10,12 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { useAuth } from "@/context/AuthContext";
+import { useCart } from "@/context/CartContext";
 
 export default function AppLayout() {
   const location = useLocation();
   const { isAuthenticated, user, logout } = useAuth();
+  const { totalItems } = useCart();
 
   return (
     <div className="min-h-screen w-screen flex flex-col">
@@ -51,9 +53,11 @@ export default function AppLayout() {
           <div className="ml-auto flex items-center gap-3">
             <Link to="/checkout" className="relative p-2">
               <ShoppingCartIcon className="size-5" />
-              <Badge className="absolute -top-1 -right-1 size-5 p-0 flex items-center justify-center text-xs">
-                0
-              </Badge>
+              {totalItems > 0 && (
+                <Badge className="absolute -top-1 -right-1 size-5 p-0 flex items-center justify-center text-xs">
+                  {totalItems}
+                </Badge>
+              )}
             </Link>
 
             {isAuthenticated ? (
