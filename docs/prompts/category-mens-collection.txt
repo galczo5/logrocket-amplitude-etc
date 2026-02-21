@@ -1,0 +1,5 @@
+Wide lifestyle fashion banner photo for a men's t-shirt collection in an online clothing store. Two or three stylish men wearing well-fitted casual t-shirts — some in solid colours, some in graphic prints. Confident, relaxed poses. Urban or minimal studio background. Modern masculine aesthetic. Horizontal/landscape orientation, 800x400. Space for text overlay. No text in the image. Photorealistic, clean editorial fashion photography style.
+
+---
+Used in: src/pages/HomePage.tsx — CATEGORIES[0] ("Men's Collection") image field
+Save generated image as: category-mens-collection.png

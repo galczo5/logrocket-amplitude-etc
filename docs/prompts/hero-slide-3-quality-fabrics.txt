@@ -1,0 +1,5 @@
+Wide lifestyle fashion banner photo emphasising fabric quality and craftsmanship for an online t-shirt store. Close-up or mid-shot of soft, premium cotton t-shirt fabric with beautiful texture detail, or a model gently feeling the softness of a high-quality tee. Warm, tactile, premium feel. Muted tones — cream, white, warm grey. Horizontal/landscape orientation, widescreen format, 1600x700. Space for text overlay in the center. No text in the image. Photorealistic, editorial fashion photography style with shallow depth of field.
+
+---
+Used in: src/pages/HomePage.tsx — HERO_SLIDES[2] ("Quality You Can Feel") image field
+Save generated image as: hero-slide-3-quality-fabrics.png

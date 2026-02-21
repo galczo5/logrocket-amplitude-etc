@@ -1,0 +1,5 @@
+Wide lifestyle fashion banner photo for an online t-shirt store. A diverse group of stylish people wearing premium quality t-shirts in neutral and muted tones — white, grey, beige. Modern, relaxed, upbeat mood. Clean bright environment, soft natural lighting. The scene feels aspirational yet approachable. Horizontal/landscape orientation, widescreen format, 1600x700. Space for text overlay in the center. No text in the image. Photorealistic, editorial fashion photography style.
+
+---
+Used in: src/pages/HomePage.tsx — HERO_SLIDES[0] ("Premium T-Shirts for Everyone") image field
+Save generated image as: hero-slide-1-premium-tshirts.png

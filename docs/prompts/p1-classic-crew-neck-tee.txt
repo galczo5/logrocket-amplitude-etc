@@ -1,0 +1,5 @@
+Product photo of a Classic Crew Neck T-shirt laid flat or on an invisible mannequin, pure white background, soft diffused studio lighting, no shadows, clean e-commerce style. The shirt is a medium grey, 100% cotton, crew neck with short sleeves, simple and minimalist with no graphics or prints. Portrait orientation, centered composition. Photorealistic, high resolution, 400x600.
+
+---
+Used in: server/data/products.ts — product p1 ("Classic Crew Neck Tee") image field
+Save generated image as: p1-classic-crew-neck-tee.png

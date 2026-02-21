@@ -1,0 +1,5 @@
+Product photo of a men's Classic Polo Shirt laid flat or on an invisible mannequin, pure white background, soft diffused studio lighting, no shadows, clean e-commerce style. The shirt is white, piqué cotton fabric, with a two-button placket at the collar, short sleeves, ribbed collar and cuffs. Smart-casual, regular fit. No graphics. Portrait orientation, centered composition. Photorealistic, high resolution, 400x600.
+
+---
+Used in: server/data/products.ts — product p4 ("Essential Polo") image field
+Save generated image as: p4-essential-polo.png

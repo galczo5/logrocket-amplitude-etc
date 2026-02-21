@@ -1,0 +1,5 @@
+Product photo of a women's Floral V-Neck T-shirt laid flat or on an invisible mannequin, pure white background, soft diffused studio lighting, no shadows, clean e-commerce style. The shirt is blush pink, lightweight modal blend fabric, v-neck collar, short sleeves, with a delicate all-over floral print pattern. Slim to regular fit. Portrait orientation, centered composition. Photorealistic, high resolution, 400x600.
+
+---
+Used in: server/data/products.ts — product p3 ("Floral V-Neck Tee") image field
+Save generated image as: p3-floral-v-neck-tee.png

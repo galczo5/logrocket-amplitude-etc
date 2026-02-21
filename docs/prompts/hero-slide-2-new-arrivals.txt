@@ -1,0 +1,5 @@
+Wide lifestyle fashion banner photo for a new arrivals drop at an online t-shirt store. Young, trendy models in colourful and bold graphic t-shirts in an urban or studio setting with a fresh, energetic vibe. Dynamic composition suggesting excitement and novelty. Vibrant but not overwhelming colours. Horizontal/landscape orientation, widescreen format, 1600x700. Space for text overlay in the center. No text in the image. Photorealistic, contemporary fashion photography style.
+
+---
+Used in: src/pages/HomePage.tsx — HERO_SLIDES[1] ("New Arrivals Just Dropped") image field
+Save generated image as: hero-slide-2-new-arrivals.png

@@ -1,0 +1,5 @@
+Product photo of a women's Striped Breton Top laid flat or on an invisible mannequin, pure white background, soft diffused studio lighting, no shadows, clean e-commerce style. The shirt features classic horizontal navy blue and white stripes in the traditional Breton sailor style, round neck, short sleeves, relaxed fit. Portrait orientation, centered composition. Photorealistic, high resolution, 400x600.
+
+---
+Used in: server/data/products.ts — product p6 ("Striped Breton Top") image field
+Save generated image as: p6-striped-breton-top.png

@@ -1,0 +1,5 @@
+Product photo of a Performance Dry-Fit Athletic T-shirt laid flat or on an invisible mannequin, pure white background, soft diffused studio lighting, no shadows, clean e-commerce style. The shirt is black, moisture-wicking stretch fabric with a slight sheen, athletic cut, crew neck, short sleeves, minimal design with subtle texture. Ideal for workouts. Portrait orientation, centered composition. Photorealistic, high resolution, 400x600.
+
+---
+Used in: server/data/products.ts — product p7 ("Performance Dry-Fit Tee") image field
+Save generated image as: p7-performance-dry-fit-tee.png

@@ -1,0 +1,5 @@
+Product photo of a women's Cropped Graphic T-shirt laid flat or on an invisible mannequin, pure white background, soft diffused studio lighting, no shadows, clean e-commerce style. The shirt is black, cropped silhouette ending above the waist, with a bold abstract graphic print on the front. Crew neck, short sleeves. Designed to pair with high-waisted bottoms. Portrait orientation, centered composition. Photorealistic, high resolution, 400x600.
+
+---
+Used in: server/data/products.ts — product p9 ("Cropped Graphic Tee") image field
+Save generated image as: p9-cropped-graphic-tee.png

@@ -1,0 +1,5 @@
+Product photo of a Tie-Dye T-shirt laid flat or on an invisible mannequin, pure white background, soft diffused studio lighting, no shadows, clean e-commerce style. The shirt features a vibrant handcrafted tie-dye pattern in blue and purple swirling tones, each area blending organically for a unique artisan look. Crew neck, short sleeves, relaxed fit. Portrait orientation, centered composition. Photorealistic, high resolution, 400x600.
+
+---
+Used in: server/data/products.ts — product p11 ("Tie-Dye Tee") image field
+Save generated image as: p11-tie-dye-tee.png

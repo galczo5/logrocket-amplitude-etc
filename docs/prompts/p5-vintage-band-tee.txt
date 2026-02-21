@@ -1,0 +1,5 @@
+Product photo of a Vintage Band T-shirt laid flat or on an invisible mannequin, pure white background, soft diffused studio lighting, no shadows, clean e-commerce style. The shirt is washed black, oversized fit, with a faded retro-style band graphic print on the front, giving a worn-in vintage look. Crew neck, short sleeves. Portrait orientation, centered composition. Photorealistic, high resolution, 400x600.
+
+---
+Used in: server/data/products.ts — product p5 ("Vintage Band Tee") image field
+Save generated image as: p5-vintage-band-tee.png

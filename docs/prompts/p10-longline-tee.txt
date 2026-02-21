@@ -1,0 +1,5 @@
+Product photo of a Longline T-shirt laid flat or on an invisible mannequin, pure white background, soft diffused studio lighting, no shadows, clean e-commerce style. The shirt is black, extended length falling below the hips, curved hem at the bottom, crew neck, short sleeves. Clean minimalist aesthetic, no graphics or prints. Portrait orientation, centered composition. Photorealistic, high resolution, 400x600.
+
+---
+Used in: server/data/products.ts — product p10 ("Longline Tee") image field
+Save generated image as: p10-longline-tee.png

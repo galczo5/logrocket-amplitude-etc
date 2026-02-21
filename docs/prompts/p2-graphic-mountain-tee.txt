@@ -1,0 +1,5 @@
+Product photo of a men's Graphic Mountain T-shirt laid flat or on an invisible mannequin, pure white background, soft diffused studio lighting, no shadows, clean e-commerce style. The shirt is navy blue, relaxed fit, with a bold mountain range graphic print on the chest. Short sleeves, crew neck. Portrait orientation, centered composition. Photorealistic, high resolution, 400x600.
+
+---
+Used in: server/data/products.ts — product p2 ("Graphic Mountain Tee") image field
+Save generated image as: p2-graphic-mountain-tee.png

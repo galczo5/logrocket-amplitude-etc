@@ -1,0 +1,5 @@
+Product photo of a women's Pima Cotton V-Neck T-shirt laid flat or on an invisible mannequin, pure white background, soft diffused studio lighting, no shadows, clean e-commerce style. The shirt is white, ultra-soft Pima cotton fabric with a luxurious drape, v-neck collar, short sleeves, lightweight and breathable. Slim to regular fit, no graphics. Portrait orientation, centered composition. Photorealistic, high resolution, 400x600.
+
+---
+Used in: server/data/products.ts — product p12 ("Pima Cotton V-Neck") image field
+Save generated image as: p12-pima-cotton-v-neck.png

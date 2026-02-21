@@ -1,0 +1,5 @@
+Wide lifestyle fashion banner photo for a unisex t-shirt collection in an online clothing store. A mixed group of people of different genders wearing relaxed-fit oversized t-shirts in neutral tones — black, white, grey, olive. Inclusive, casual, effortless vibe. Minimal or urban background. Horizontal/landscape orientation, 800x400. Space for text overlay. No text in the image. Photorealistic, clean editorial fashion photography style.
+
+---
+Used in: src/pages/HomePage.tsx — CATEGORIES[2] ("Unisex Collection") image field
+Save generated image as: category-unisex-collection.png

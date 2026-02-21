@@ -1,0 +1,5 @@
+Product photo of a men's Pocket T-shirt laid flat or on an invisible mannequin, pure white background, soft diffused studio lighting, no shadows, clean e-commerce style. The shirt is white, heavyweight cotton, crew neck, short sleeves, with a single small patch pocket on the left chest. Simple, clean, minimalist design. Regular fit. Portrait orientation, centered composition. Photorealistic, high resolution, 400x600.
+
+---
+Used in: server/data/products.ts — product p8 ("Pocket Tee") image field
+Save generated image as: p8-pocket-tee.png
