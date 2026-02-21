@@ -9,6 +9,7 @@ import {
   CarouselItem,
   CarouselPrevious,
   CarouselNext,
+  type CarouselApi,
 } from "@/components/ui/carousel";
 import ProductCard from "@/components/ProductCard";
 import { api } from "@/lib/api";
@@ -55,21 +56,36 @@ const CATEGORIES = [
 
 export default function HomePage() {
   const [featured, setFeatured] = useState<Product[]>([]);
+  const [carouselApi, setCarouselApi] = useState<CarouselApi>();
 
   useEffect(() => {
     api
       .get<{ products: Product[]; total: number }>("/products")
       .then(({ products }) =>
-        setFeatured(products.filter((p) => p.featured).slice(0, 4))
+        setFeatured(products.filter((p) => p.featured).slice(0, 4)),
       )
       .catch(console.error);
   }, []);
+
+  useEffect(() => {
+    if (!carouselApi) return;
+
+    const interval = setInterval(() => {
+      carouselApi.scrollNext();
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [carouselApi]);
 
   return (
     <div className="flex flex-col">
       {/* Hero */}
       <section className="relative">
-        <Carousel opts={{ loop: true }} className="w-full">
+        <Carousel
+          opts={{ loop: true }}
+          setApi={setCarouselApi}
+          className="w-full"
+        >
           <CarouselContent>
             {HERO_SLIDES.map((slide, i) => (
               <CarouselItem key={i}>
@@ -123,7 +139,9 @@ export default function HomePage() {
                   <CardTitle className="text-base">{cat.label}</CardTitle>
                 </CardHeader>
                 <CardContent className="pb-4">
-                  <p className="text-sm text-muted-foreground">{cat.description}</p>
+                  <p className="text-sm text-muted-foreground">
+                    {cat.description}
+                  </p>
                   <span className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-primary group-hover:underline">
                     Shop now <ArrowRightIcon className="size-3" />
                   </span>

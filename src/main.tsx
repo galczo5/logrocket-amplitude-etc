@@ -5,13 +5,16 @@ import "./index.css"
 import router from "./router"
 import { AuthProvider } from "./context/AuthContext"
 import { CartProvider } from "./context/CartContext"
+import { ThemeProvider } from "./context/ThemeContext"
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <AuthProvider>
-      <CartProvider>
-        <RouterProvider router={router} />
-      </CartProvider>
-    </AuthProvider>
+    <ThemeProvider>
+      <AuthProvider>
+        <CartProvider>
+          <RouterProvider router={router} />
+        </CartProvider>
+      </AuthProvider>
+    </ThemeProvider>
   </StrictMode>
 )

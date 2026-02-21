@@ -1,5 +1,5 @@
 import { Link, Outlet, useLocation } from "react-router";
-import { ShoppingCartIcon, UserIcon, LogOutIcon } from "lucide-react";
+import { ShoppingCartIcon, UserIcon, LogOutIcon, SunIcon, MoonIcon } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -11,11 +11,13 @@ import {
 } from "@/components/ui/navigation-menu";
 import { useAuth } from "@/context/AuthContext";
 import { useCart } from "@/context/CartContext";
+import { useTheme } from "@/context/ThemeContext";
 
 export default function AppLayout() {
   const location = useLocation();
   const { isAuthenticated, user, logout } = useAuth();
   const { totalItems } = useCart();
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <div className="min-h-screen w-screen flex flex-col">
@@ -60,6 +62,19 @@ export default function AppLayout() {
           </NavigationMenu>
 
           <div className="ml-auto flex items-center gap-3">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={toggleTheme}
+              aria-label="Toggle theme"
+            >
+              {theme === "light" ? (
+                <MoonIcon className="size-5" />
+              ) : (
+                <SunIcon className="size-5" />
+              )}
+            </Button>
+
             <Link to="/checkout" className="relative p-2">
               <ShoppingCartIcon className="size-5" />
               {totalItems > 0 && (
