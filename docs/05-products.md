@@ -2,15 +2,15 @@
 
 ## Checklist
 
-- [ ] Build filter sidebar (category, size, color, price range)
-- [ ] Build product grid using `ProductCard`
-- [ ] Connect filters to URL search params
-- [ ] Fetch products from `GET /api/products` with filter query params
-- [ ] Add sort dropdown (price low-high, price high-low, rating)
-- [ ] Add search bar for text search
-- [ ] Show product count and active filters summary
-- [ ] Verify desktop layout looks good (desktop-only, no responsive needed)
-- [ ] Add loading state with spinner
+- [x] Build filter sidebar (category, size, color, price range)
+- [x] Build product grid using `ProductCard`
+- [x] Connect filters to URL search params
+- [x] Fetch products from `GET /api/products` with filter query params
+- [x] Add sort dropdown (price low-high, price high-low, rating)
+- [x] Add search bar for text search
+- [x] Show product count and active filters summary
+- [x] Verify desktop layout looks good (desktop-only, no responsive needed)
+- [x] Add loading state with spinner
 
 ## Details
 
