@@ -2,11 +2,11 @@
 
 ## Checklist
 
-- [ ] Install `react-router` dependency
-- [ ] Create app layout with header and footer
-- [ ] Set up React Router with all routes
-- [ ] Create placeholder page components
-- [ ] Add navigation menu to header
+- [x] Install `react-router` dependency
+- [x] Create app layout with header and footer
+- [x] Set up React Router with all routes
+- [x] Create placeholder page components
+- [x] Add navigation menu to header
 - [ ] Configure Vite proxy to forward `/api` requests to Express server
 - [ ] Verify all routes render correctly
 
