@@ -16,17 +16,17 @@ import type { Product } from "@/types/product";
 
 const HERO_SLIDES = [
   {
-    image: "https://placehold.co/1600x700.png",
+    image: "/images/home/hero-slide-1-premium-tshirts.png",
     heading: "Premium T-Shirts for Everyone",
     sub: "Discover our collection of comfortable, stylish tees",
   },
   {
-    image: "https://placehold.co/1600x700.png",
+    image: "/images/home/hero-slide-2-new-arrivals.png",
     heading: "New Arrivals Just Dropped",
     sub: "Fresh styles added every week — be the first to wear them",
   },
   {
-    image: "https://placehold.co/1600x700.png",
+    image: "/images/home/hero-slide-3-quality-fabrics.png",
     heading: "Quality You Can Feel",
     sub: "Soft fabrics, lasting colours, and fits for every body",
   },
@@ -36,19 +36,19 @@ const CATEGORIES = [
   {
     key: "men",
     label: "Men's Collection",
-    image: "https://placehold.co/800x400.png",
+    image: "/images/home/category-mens-collection.png",
     description: "Classic cuts and bold graphics for everyday wear.",
   },
   {
     key: "women",
     label: "Women's Collection",
-    image: "https://placehold.co/800x400.png",
+    image: "/images/home/category-womens-collection.png",
     description: "Soft fabrics and flattering fits for every occasion.",
   },
   {
     key: "unisex",
     label: "Unisex Collection",
-    image: "https://placehold.co/800x400.png",
+    image: "/images/home/category-unisex-collection.png",
     description: "Relaxed silhouettes designed for everyone.",
   },
 ];

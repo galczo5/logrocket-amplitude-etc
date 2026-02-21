@@ -23,7 +23,7 @@ export const products: Product[] = [
     name: "Classic Crew Neck Tee",
     description: "A timeless crew neck t-shirt in soft 100% cotton. Perfect for everyday wear.",
     price: 1999,
-    image: "https://placehold.co/400x600.png",
+    image: "/images/products/p1-classic-crew-neck-tee.png",
     category: "unisex",
     sizes: ["S", "M", "L", "XL"],
     colors: [
@@ -40,7 +40,7 @@ export const products: Product[] = [
     name: "Graphic Mountain Tee",
     description: "Bold mountain graphic print on a relaxed-fit tee. Great for outdoor enthusiasts.",
     price: 2499,
-    image: "https://placehold.co/400x600.png",
+    image: "/images/products/p2-graphic-mountain-tee.png",
     category: "men",
     sizes: ["S", "M", "L", "XL"],
     colors: [
@@ -56,7 +56,7 @@ export const products: Product[] = [
     name: "Floral V-Neck Tee",
     description: "Lightweight v-neck with a delicate floral print. Soft modal blend fabric.",
     price: 2299,
-    image: "https://placehold.co/400x600.png",
+    image: "/images/products/p3-floral-v-neck-tee.png",
     category: "women",
     sizes: ["XS", "S", "M", "L"],
     colors: [
@@ -73,7 +73,7 @@ export const products: Product[] = [
     name: "Essential Polo",
     description: "Classic piqué polo shirt with a two-button placket. Smart-casual staple.",
     price: 3499,
-    image: "https://placehold.co/400x600.png",
+    image: "/images/products/p4-essential-polo.png",
     category: "men",
     sizes: ["S", "M", "L", "XL"],
     colors: [
@@ -91,7 +91,7 @@ export const products: Product[] = [
     name: "Vintage Band Tee",
     description: "Retro-washed graphic tee with a worn-in feel. Oversized fit.",
     price: 2799,
-    image: "https://placehold.co/400x600.png",
+    image: "/images/products/p5-vintage-band-tee.png",
     category: "unisex",
     sizes: ["S", "M", "L", "XL"],
     colors: [
@@ -107,7 +107,7 @@ export const products: Product[] = [
     name: "Striped Breton Top",
     description: "Classic Breton-style striped tee. Relaxed fit with a round neck.",
     price: 2599,
-    image: "https://placehold.co/400x600.png",
+    image: "/images/products/p6-striped-breton-top.png",
     category: "women",
     sizes: ["XS", "S", "M", "L", "XL"],
     colors: [
@@ -123,7 +123,7 @@ export const products: Product[] = [
     name: "Performance Dry-Fit Tee",
     description: "Moisture-wicking athletic tee with stretch fabric. Ideal for workouts.",
     price: 2999,
-    image: "https://placehold.co/400x600.png",
+    image: "/images/products/p7-performance-dry-fit-tee.png",
     category: "unisex",
     sizes: ["S", "M", "L", "XL"],
     colors: [
@@ -140,7 +140,7 @@ export const products: Product[] = [
     name: "Pocket Tee",
     description: "Simple left-chest pocket tee in heavyweight cotton. A wardrobe essential.",
     price: 1799,
-    image: "https://placehold.co/400x600.png",
+    image: "/images/products/p8-pocket-tee.png",
     category: "men",
     sizes: ["S", "M", "L", "XL"],
     colors: [
@@ -157,7 +157,7 @@ export const products: Product[] = [
     name: "Cropped Graphic Tee",
     description: "Cropped silhouette with bold front graphic. Pairs well with high-waisted bottoms.",
     price: 2199,
-    image: "https://placehold.co/400x600.png",
+    image: "/images/products/p9-cropped-graphic-tee.png",
     category: "women",
     sizes: ["XS", "S", "M"],
     colors: [
@@ -174,7 +174,7 @@ export const products: Product[] = [
     name: "Longline Tee",
     description: "Extended-length tee with a curved hem. Clean minimalist aesthetic.",
     price: 2399,
-    image: "https://placehold.co/400x600.png",
+    image: "/images/products/p10-longline-tee.png",
     category: "unisex",
     sizes: ["S", "M", "L", "XL"],
     colors: [
@@ -191,7 +191,7 @@ export const products: Product[] = [
     name: "Tie-Dye Tee",
     description: "Handcrafted tie-dye pattern. Each piece is unique — no two are the same.",
     price: 3199,
-    image: "https://placehold.co/400x600.png",
+    image: "/images/products/p11-tie-dye-tee.png",
     category: "unisex",
     sizes: ["S", "M", "L", "XL"],
     colors: [
@@ -207,7 +207,7 @@ export const products: Product[] = [
     name: "Pima Cotton V-Neck",
     description: "Ultra-soft Pima cotton v-neck. Lightweight and breathable for warm days.",
     price: 2699,
-    image: "https://placehold.co/400x600.png",
+    image: "/images/products/p12-pima-cotton-v-neck.png",
     category: "women",
     sizes: ["XS", "S", "M", "L", "XL"],
     colors: [
