@@ -5,12 +5,12 @@
 - [x] Create Express server entry point (`server/index.ts`)
 - [x] Create mocked product data (`server/data/products.ts`)
 - [x] Create mocked user data (`server/data/users.ts`)
-- [ ] Implement `GET /api/products` endpoint (with query params for filtering)
-- [ ] Implement `GET /api/products/:id` endpoint
-- [ ] Implement `POST /api/auth/login` endpoint
-- [ ] Implement `POST /api/orders` endpoint
-- [ ] Add a dev script to run the server with `tsx`
-- [ ] Test all endpoints manually or with curl
+- [x] Implement `GET /api/products` endpoint (with query params for filtering)
+- [x] Implement `GET /api/products/:id` endpoint
+- [x] Implement `POST /api/auth/login` endpoint
+- [x] Implement `POST /api/orders` endpoint
+- [x] Add a dev script to run the server with `tsx`
+- [x] Test all endpoints manually or with curl
 
 ## Details
 
