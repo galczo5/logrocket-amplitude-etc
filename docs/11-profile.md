@@ -2,12 +2,12 @@
 
 ## Checklist
 
-- [ ] Create `ProfilePage` component at `src/pages/ProfilePage.tsx`
-- [ ] Add `/profile` route to the router (auth-guarded)
-- [ ] Add "Profile" link to the header when user is authenticated
-- [ ] Display user details from `AuthContext`
-- [ ] Display order history fetched from `GET /api/orders`
-- [ ] Add backend endpoint `GET /api/orders` returning the current user's orders
+- [x] Create `ProfilePage` component at `src/pages/ProfilePage.tsx`
+- [x] Add `/profile` route to the router (auth-guarded)
+- [x] Add "Profile" link to the header when user is authenticated
+- [x] Display user details from `AuthContext`
+- [x] Display order history fetched from `GET /api/orders`
+- [x] Add backend endpoint `GET /api/orders` returning the current user's orders
 
 ## Details
 

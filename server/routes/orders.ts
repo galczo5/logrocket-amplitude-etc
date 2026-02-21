@@ -1,6 +1,12 @@
 import { Router } from "express";
+import { mockOrders } from "../data/orders.js";
 
 const router = Router();
+
+// GET /api/orders
+router.get("/", (_req, res) => {
+  res.json({ orders: mockOrders });
+});
 
 // POST /api/orders
 router.post("/", (_req, res) => {

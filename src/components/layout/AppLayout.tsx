@@ -71,7 +71,12 @@ export default function AppLayout() {
 
             {isAuthenticated ? (
               <div className="flex items-center gap-2">
-                <span className="text-sm font-medium">{user?.name}</span>
+                <Link
+                  to="/profile"
+                  className="text-sm font-medium px-3 py-1.5 rounded-md hover:bg-accent"
+                >
+                  {user?.name}
+                </Link>
                 <Button
                   variant="ghost"
                   size="sm"
