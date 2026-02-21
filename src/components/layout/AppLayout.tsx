@@ -92,7 +92,15 @@ export default function AppLayout() {
       </main>
 
       <footer className="border-t py-4 text-center text-sm text-muted-foreground">
-        © {new Date().getFullYear()} T-Shirt Shop. All rights reserved.
+        This is an example app for presentation purposes only.{" "}
+        <a
+          href="https://github.com/galczo5/logrocket-amplitude-etc"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline hover:text-foreground"
+        >
+          View source on GitHub
+        </a>
       </footer>
     </div>
   );
