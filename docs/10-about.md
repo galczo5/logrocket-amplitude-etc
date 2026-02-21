@@ -2,10 +2,10 @@
 
 ## Checklist
 
-- [ ] Create `AboutPage` component at `src/pages/AboutPage.tsx`
-- [ ] Add `/about` route to the router
-- [ ] Add "About" link to the site navigation header
-- [ ] Build the page sections: intro, purpose, tech stack, monitoring tools
+- [x] Create `AboutPage` component at `src/pages/AboutPage.tsx`
+- [x] Add `/about` route to the router
+- [x] Add "About" link to the site navigation header
+- [x] Build the page sections: intro, purpose, tech stack, monitoring tools
 
 ## Details
 

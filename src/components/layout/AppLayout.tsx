@@ -47,6 +47,15 @@ export default function AppLayout() {
                   <Link to="/products">Products</Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuLink
+                  asChild
+                  data-active={location.pathname === "/about" || undefined}
+                  className={navigationMenuTriggerStyle()}
+                >
+                  <Link to="/about">About</Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
 

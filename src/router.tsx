@@ -6,6 +6,7 @@ import ProductsPage from "@/pages/ProductsPage"
 import ProductDetailPage from "@/pages/ProductDetailPage"
 import CheckoutPage from "@/pages/CheckoutPage"
 import PaymentPage from "@/pages/PaymentPage"
+import AboutPage from "@/pages/AboutPage"
 
 const router = createHashRouter([
   {
@@ -17,6 +18,7 @@ const router = createHashRouter([
       { path: "/products/:id", element: <ProductDetailPage /> },
       { path: "/checkout", element: <CheckoutPage /> },
       { path: "/checkout/payment", element: <PaymentPage /> },
+      { path: "/about", element: <AboutPage /> },
     ],
   },
 ])
