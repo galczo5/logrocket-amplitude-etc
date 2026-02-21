@@ -24,7 +24,7 @@ export default function AppLayout() {
       <header className="border-b bg-background">
         <div className="mx-auto px-6 h-14 flex items-center gap-6 min-w-[1200px]">
           <Link to="/" className="text-lg font-semibold shrink-0">
-            T-Shirt Shop
+            Wear Your Story
           </Link>
 
           <NavigationMenu>

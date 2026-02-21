@@ -17,6 +17,7 @@ import { Toggle } from "@/components/ui/toggle";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { api } from "@/lib/api";
 import { useCart } from "@/context/CartContext";
+import ProductCard from "@/components/ProductCard";
 import type { Product, Color } from "@/types/product";
 
 function formatPrice(cents: number) {
@@ -31,6 +32,7 @@ export default function ProductDetailPage() {
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
+  const [similarProducts, setSimilarProducts] = useState<Product[]>([]);
 
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [selectedColor, setSelectedColor] = useState<Color | null>(null);
@@ -42,9 +44,22 @@ export default function ProductDetailPage() {
     setNotFound(false);
     setSelectedSize(null);
     setSelectedColor(null);
+    setSimilarProducts([]);
     api
       .get<Product>(`/products/${id}`)
-      .then((p) => setProduct(p))
+      .then((p) => {
+        setProduct(p);
+        return Promise.all([
+          Promise.resolve(p),
+          api.get<{ products: Product[]; total: number }>("/products"),
+        ]);
+      })
+      .then(([currentProduct, { products }]) => {
+        const similar = products
+          .filter((p) => p.category === currentProduct.category && p.id !== currentProduct.id)
+          .slice(0, 4);
+        setSimilarProducts(similar);
+      })
       .catch(() => setNotFound(true))
       .finally(() => setLoading(false));
   }, [id]);
@@ -224,6 +239,18 @@ export default function ProductDetailPage() {
           </div>
         </div>
       </div>
+
+      {/* Similar products */}
+      {similarProducts.length > 0 && (
+        <section className="mt-16 border-t pt-16">
+          <h2 className="text-2xl font-semibold mb-8">Similar Products</h2>
+          <div className="grid grid-cols-4 gap-6">
+            {similarProducts.map((p) => (
+              <ProductCard key={p.id} product={p} />
+            ))}
+          </div>
+        </section>
+      )}
     </div>
   );
 }
