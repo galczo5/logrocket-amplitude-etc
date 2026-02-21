@@ -44,12 +44,12 @@ interface User {
 
 Displayed fields:
 
-| Field | Display |
-|-------|---------|
-| Avatar | Circular image if `avatar` is set, otherwise initials fallback (first letter of name) |
-| Name | Large text below avatar |
-| Email | Muted text below name |
-| User ID | Small muted label, e.g. "ID: usr_abc123" |
+| Field   | Display                                                                               |
+| ------- | ------------------------------------------------------------------------------------- |
+| Avatar  | Circular image if `avatar` is set, otherwise initials fallback (first letter of name) |
+| Name    | Large text below avatar                                                               |
+| Email   | Muted text below name                                                                 |
+| User ID | Small muted label, e.g. "ID: usr_abc123"                                              |
 
 - **button** (variant=outline, full width) — "Sign Out" — calls `authContext.logout()` and navigates to `/`
 
@@ -77,13 +77,13 @@ Fetch from `GET /api/orders` (requires `Authorization: Bearer <token>` header, u
 
 Order fields to display:
 
-| Field | Notes |
-|-------|-------|
-| Order ID | e.g. "Order #ORD-1234" |
-| Status | **badge** — "confirmed" (green), "pending" (yellow) |
-| Date | Formatted as `MMM DD, YYYY` |
-| Line items | Product name × quantity + line total |
-| Order total | Sum of all items + shipping |
+| Field       | Notes                                               |
+| ----------- | --------------------------------------------------- |
+| Order ID    | e.g. "Order #ORD-1234"                              |
+| Status      | **badge** — "confirmed" (green), "pending" (yellow) |
+| Date        | Formatted as `MMM DD, YYYY`                         |
+| Line items  | Product name × quantity + line total                |
+| Order total | Sum of all items + shipping                         |
 
 ### 11.4 Backend: `GET /api/orders`
 
@@ -93,10 +93,10 @@ Since all data is mocked, seed a few example orders for every user on server sta
 
 ```ts
 interface Order {
-  id: string;           // e.g. "ORD-1234"
+  id: string; // e.g. "ORD-1234"
   userId: string;
-  status: "confirmed" | "pending";
-  createdAt: string;    // ISO date string
+  status: 'confirmed' | 'pending';
+  createdAt: string; // ISO date string
   items: Array<{
     productId: string;
     name: string;

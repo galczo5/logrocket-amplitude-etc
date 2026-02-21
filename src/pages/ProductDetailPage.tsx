@@ -1,24 +1,24 @@
-import { useEffect, useState } from "react";
-import { Link, useParams, useNavigate } from "react-router";
-import { StarIcon, CheckCircleIcon } from "lucide-react";
+import { useEffect, useState } from 'react';
+import { Link, useParams, useNavigate } from 'react-router';
+import { StarIcon, CheckCircleIcon } from 'lucide-react';
 import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbList,
   BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
-import { Spinner } from "@/components/ui/spinner";
-import { Toggle } from "@/components/ui/toggle";
-import { Alert, AlertDescription } from "@/components/ui/alert";
-import { api } from "@/lib/api";
-import { useCart } from "@/context/CartContext";
-import ProductCard from "@/components/ProductCard";
-import type { Product, Color } from "@/types/product";
+  BreadcrumbSeparator
+} from '@/components/ui/breadcrumb';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Separator } from '@/components/ui/separator';
+import { Spinner } from '@/components/ui/spinner';
+import { Toggle } from '@/components/ui/toggle';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { api } from '@/lib/api';
+import { useCart } from '@/context/CartContext';
+import ProductCard from '@/components/ProductCard';
+import type { Product, Color } from '@/types/product';
 
 function formatPrice(cents: number) {
   return `$${(cents / 100).toFixed(2)}`;
@@ -36,7 +36,7 @@ export default function ProductDetailPage() {
 
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [selectedColor, setSelectedColor] = useState<Color | null>(null);
-  const [validationMsg, setValidationMsg] = useState("");
+  const [validationMsg, setValidationMsg] = useState('');
   const [addedMsg, setAddedMsg] = useState(false);
 
   useEffect(() => {
@@ -49,10 +49,7 @@ export default function ProductDetailPage() {
       .get<Product>(`/products/${id}`)
       .then((p) => {
         setProduct(p);
-        return Promise.all([
-          Promise.resolve(p),
-          api.get<{ products: Product[]; total: number }>("/products"),
-        ]);
+        return Promise.all([Promise.resolve(p), api.get<{ products: Product[]; total: number }>('/products')]);
       })
       .then(([currentProduct, { products }]) => {
         const similar = products
@@ -68,21 +65,21 @@ export default function ProductDetailPage() {
     if (!selectedSize || !selectedColor) {
       setValidationMsg(
         !selectedSize && !selectedColor
-          ? "Please select a size and color."
+          ? 'Please select a size and color.'
           : !selectedSize
-          ? "Please select a size."
-          : "Please select a color."
+            ? 'Please select a size.'
+            : 'Please select a color.'
       );
       return;
     }
-    setValidationMsg("");
+    setValidationMsg('');
     addItem({
       productId: product!.id,
       name: product!.name,
       price: product!.price,
       size: selectedSize,
       color: selectedColor.name,
-      image: product!.image,
+      image: product!.image
     });
     setAddedMsg(true);
     setTimeout(() => setAddedMsg(false), 3000);
@@ -100,7 +97,7 @@ export default function ProductDetailPage() {
     return (
       <div className="flex flex-col items-center justify-center py-32 gap-4 text-muted-foreground">
         <p className="text-xl font-medium">Product not found.</p>
-        <Button variant="outline" onClick={() => navigate("/products")}>
+        <Button variant="outline" onClick={() => navigate('/products')}>
           Back to Products
         </Button>
       </div>
@@ -134,11 +131,7 @@ export default function ProductDetailPage() {
       <div className="grid grid-cols-2 gap-12">
         {/* Image */}
         <div className="aspect-[2/3] overflow-hidden rounded-xl bg-muted">
-          <img
-            src={product.image}
-            alt={product.name}
-            className="h-full w-full object-cover"
-          />
+          <img src={product.image} alt={product.name} className="h-full w-full object-cover" />
         </div>
 
         {/* Info */}
@@ -150,9 +143,7 @@ export default function ProductDetailPage() {
             </Badge>
           </div>
 
-          <p className="text-3xl font-semibold text-primary">
-            {formatPrice(product.price)}
-          </p>
+          <p className="text-3xl font-semibold text-primary">{formatPrice(product.price)}</p>
 
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
             <StarIcon className="size-4 fill-amber-400 text-amber-400" />
@@ -165,10 +156,7 @@ export default function ProductDetailPage() {
           {/* Color selector */}
           <div className="flex flex-col gap-2">
             <p className="text-sm font-medium">
-              Color:{" "}
-              <span className="font-normal text-muted-foreground">
-                {selectedColor?.name ?? "—"}
-              </span>
+              Color: <span className="font-normal text-muted-foreground">{selectedColor?.name ?? '—'}</span>
             </p>
             <div className="flex gap-2">
               {product.colors.map((color) => {
@@ -180,8 +168,8 @@ export default function ProductDetailPage() {
                     onClick={() => setSelectedColor(color)}
                     className={`size-8 rounded-full transition-all shadow-sm ${
                       active
-                        ? "border-2 border-primary ring-2 ring-primary ring-offset-2"
-                        : "border border-gray-300 hover:border-gray-500"
+                        ? 'border-2 border-primary ring-2 ring-primary ring-offset-2'
+                        : 'border border-gray-300 hover:border-gray-500'
                     }`}
                     style={{ backgroundColor: color.hex }}
                   />
@@ -199,9 +187,7 @@ export default function ProductDetailPage() {
                   key={size}
                   variant="outline"
                   pressed={selectedSize === size}
-                  onPressedChange={(pressed) =>
-                    setSelectedSize(pressed ? size : null)
-                  }
+                  onPressedChange={(pressed) => setSelectedSize(pressed ? size : null)}
                   className="w-12 text-foreground data-[state=on]:bg-primary data-[state=on]:text-primary-foreground data-[state=on]:border-primary"
                 >
                   {size}
@@ -214,9 +200,7 @@ export default function ProductDetailPage() {
 
           {/* Add to cart */}
           <div className="flex flex-col gap-3">
-            {validationMsg && (
-              <p className="text-sm text-destructive">{validationMsg}</p>
-            )}
+            {validationMsg && <p className="text-sm text-destructive">{validationMsg}</p>}
             {addedMsg && (
               <Alert className="border-green-500 bg-green-50 text-green-800">
                 <CheckCircleIcon className="size-4 text-green-600" />
@@ -233,9 +217,7 @@ export default function ProductDetailPage() {
           {/* Description */}
           <div>
             <p className="text-sm font-medium mb-2">Description</p>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              {product.description}
-            </p>
+            <p className="text-sm text-muted-foreground leading-relaxed">{product.description}</p>
           </div>
         </div>
       </div>

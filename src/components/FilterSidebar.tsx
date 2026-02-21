@@ -1,23 +1,23 @@
-import { useState } from "react";
-import { ChevronDownIcon, ChevronUpIcon } from "lucide-react";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
-import { Label } from "@/components/ui/label";
+import { useState } from 'react';
+import { ChevronDownIcon, ChevronUpIcon } from 'lucide-react';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
+import { Separator } from '@/components/ui/separator';
+import { Label } from '@/components/ui/label';
 
-const CATEGORIES = ["men", "women", "unisex"];
-const SIZES = ["XS", "S", "M", "L", "XL"];
+const CATEGORIES = ['men', 'women', 'unisex'];
+const SIZES = ['XS', 'S', 'M', 'L', 'XL'];
 const COLORS = [
-  { name: "Black", hex: "#000000" },
-  { name: "White", hex: "#FFFFFF" },
-  { name: "Gray", hex: "#9CA3AF" },
-  { name: "Navy", hex: "#1E3A5F" },
-  { name: "Red", hex: "#DC2626" },
-  { name: "Blue", hex: "#3B82F6" },
-  { name: "Pink", hex: "#EC4899" },
-  { name: "Olive", hex: "#6B7C32" },
-  { name: "Orange", hex: "#F97316" },
+  { name: 'Black', hex: '#000000' },
+  { name: 'White', hex: '#FFFFFF' },
+  { name: 'Gray', hex: '#9CA3AF' },
+  { name: 'Navy', hex: '#1E3A5F' },
+  { name: 'Red', hex: '#DC2626' },
+  { name: 'Blue', hex: '#3B82F6' },
+  { name: 'Pink', hex: '#EC4899' },
+  { name: 'Olive', hex: '#6B7C32' },
+  { name: 'Orange', hex: '#F97316' }
 ];
 
 export interface FilterValues {
@@ -34,13 +34,7 @@ interface Props {
   onClear: () => void;
 }
 
-function Section({
-  title,
-  children,
-}: {
-  title: string;
-  children: React.ReactNode;
-}) {
+function Section({ title, children }: { title: string; children: React.ReactNode }) {
   const [open, setOpen] = useState(true);
   return (
     <div>
@@ -85,7 +79,7 @@ export default function FilterSidebar({ filters, onChange, onClear }: Props) {
               onCheckedChange={() =>
                 onChange({
                   ...filters,
-                  categories: toggleItem(filters.categories, cat),
+                  categories: toggleItem(filters.categories, cat)
                 })
               }
             />
@@ -104,9 +98,7 @@ export default function FilterSidebar({ filters, onChange, onClear }: Props) {
             <Checkbox
               id={`size-${size}`}
               checked={filters.sizes.includes(size)}
-              onCheckedChange={() =>
-                onChange({ ...filters, sizes: toggleItem(filters.sizes, size) })
-              }
+              onCheckedChange={() => onChange({ ...filters, sizes: toggleItem(filters.sizes, size) })}
             />
             <Label htmlFor={`size-${size}`} className="font-normal cursor-pointer">
               {size}
@@ -126,7 +118,7 @@ export default function FilterSidebar({ filters, onChange, onClear }: Props) {
               onCheckedChange={() =>
                 onChange({
                   ...filters,
-                  colors: toggleItem(filters.colors, color.name),
+                  colors: toggleItem(filters.colors, color.name)
                 })
               }
             />

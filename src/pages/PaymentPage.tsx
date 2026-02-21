@@ -1,16 +1,16 @@
-import { useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router";
-import { CheckCircleIcon } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
-import { Alert, AlertDescription } from "@/components/ui/alert";
-import { Spinner } from "@/components/ui/spinner";
-import { useCart } from "@/context/CartContext";
-import { api } from "@/lib/api";
-import { CheckoutProgress } from "./CheckoutPage";
+import { useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router';
+import { CheckCircleIcon } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Separator } from '@/components/ui/separator';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { Spinner } from '@/components/ui/spinner';
+import { useCart } from '@/context/CartContext';
+import { api } from '@/lib/api';
+import { CheckoutProgress } from './CheckoutPage';
 
 const SHIPPING_FLAT = 500;
 const FREE_SHIPPING_THRESHOLD = 5000;
@@ -35,24 +35,24 @@ interface PaymentErrors {
 
 function validatePayment(form: PaymentForm): PaymentErrors {
   const errors: PaymentErrors = {};
-  if (!form.cardholderName.trim()) errors.cardholderName = "Cardholder name is required.";
-  const digits = form.cardNumber.replace(/\s/g, "");
-  if (!digits) errors.cardNumber = "Card number is required.";
-  else if (!/^\d{16}$/.test(digits)) errors.cardNumber = "Card number must be 16 digits.";
-  if (!form.expiry.trim()) errors.expiry = "Expiry date is required.";
-  else if (!/^\d{2}\/\d{2}$/.test(form.expiry)) errors.expiry = "Use MM/YY format.";
-  if (!form.cvc.trim()) errors.cvc = "CVC is required.";
-  else if (!/^\d{3}$/.test(form.cvc)) errors.cvc = "CVC must be 3 digits.";
+  if (!form.cardholderName.trim()) errors.cardholderName = 'Cardholder name is required.';
+  const digits = form.cardNumber.replace(/\s/g, '');
+  if (!digits) errors.cardNumber = 'Card number is required.';
+  else if (!/^\d{16}$/.test(digits)) errors.cardNumber = 'Card number must be 16 digits.';
+  if (!form.expiry.trim()) errors.expiry = 'Expiry date is required.';
+  else if (!/^\d{2}\/\d{2}$/.test(form.expiry)) errors.expiry = 'Use MM/YY format.';
+  if (!form.cvc.trim()) errors.cvc = 'CVC is required.';
+  else if (!/^\d{3}$/.test(form.cvc)) errors.cvc = 'CVC must be 3 digits.';
   return errors;
 }
 
 function formatCardNumber(value: string) {
-  const digits = value.replace(/\D/g, "").slice(0, 16);
-  return digits.replace(/(\d{4})(?=\d)/g, "$1 ");
+  const digits = value.replace(/\D/g, '').slice(0, 16);
+  return digits.replace(/(\d{4})(?=\d)/g, '$1 ');
 }
 
 function formatExpiry(value: string) {
-  const digits = value.replace(/\D/g, "").slice(0, 4);
+  const digits = value.replace(/\D/g, '').slice(0, 4);
   if (digits.length > 2) return `${digits.slice(0, 2)}/${digits.slice(2)}`;
   return digits;
 }
@@ -65,10 +65,10 @@ export default function PaymentPage() {
   const shipping_data = (location.state as { shipping?: Record<string, string> } | null)?.shipping;
 
   const [form, setForm] = useState<PaymentForm>({
-    cardholderName: "John Doe",
-    cardNumber: "4242 4242 4242 4242",
-    expiry: "12/28",
-    cvc: "123",
+    cardholderName: 'John Doe',
+    cardNumber: '4242 4242 4242 4242',
+    expiry: '12/28',
+    cvc: '123'
   });
   const [errors, setErrors] = useState<PaymentErrors>({});
   const [submitting, setSubmitting] = useState(false);
@@ -83,19 +83,19 @@ export default function PaymentPage() {
 
   // Guards
   if (items.length === 0 && !confirmation) {
-    navigate("/checkout", { replace: true });
+    navigate('/checkout', { replace: true });
     return null;
   }
   if (!shipping_data && !confirmation) {
-    navigate("/checkout", { replace: true });
+    navigate('/checkout', { replace: true });
     return null;
   }
 
   function handleChange(field: keyof PaymentForm, raw: string) {
     let value = raw;
-    if (field === "cardNumber") value = formatCardNumber(raw);
-    if (field === "expiry") value = formatExpiry(raw);
-    if (field === "cvc") value = raw.replace(/\D/g, "").slice(0, 3);
+    if (field === 'cardNumber') value = formatCardNumber(raw);
+    if (field === 'expiry') value = formatExpiry(raw);
+    if (field === 'cvc') value = raw.replace(/\D/g, '').slice(0, 3);
     setForm((f) => ({ ...f, [field]: value }));
     if (errors[field]) setErrors((e) => ({ ...e, [field]: undefined }));
   }
@@ -110,20 +110,20 @@ export default function PaymentPage() {
     setSubmitting(true);
     setApiError(null);
     try {
-      const digits = form.cardNumber.replace(/\s/g, "");
-      const result = await api.post<{ orderId: string }>("/orders", {
+      const digits = form.cardNumber.replace(/\s/g, '');
+      const result = await api.post<{ orderId: string }>('/orders', {
         items,
         shipping: shipping_data,
         payment: {
           cardholderName: form.cardholderName,
-          lastFour: digits.slice(-4),
-        },
+          lastFour: digits.slice(-4)
+        }
       });
       const snapshot = { items: [...items], totalPrice, shipping, total };
       clearCart();
       setConfirmation({ orderId: result.orderId, snapshot });
     } catch (err) {
-      setApiError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+      setApiError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
     } finally {
       setSubmitting(false);
     }
@@ -139,9 +139,7 @@ export default function PaymentPage() {
           <div>
             <h1 className="text-3xl font-bold">Order Confirmed!</h1>
             <p className="text-muted-foreground mt-2">Thank you for your purchase.</p>
-            <p className="text-lg font-semibold mt-1">
-              Order #{confirmation.orderId}
-            </p>
+            <p className="text-lg font-semibold mt-1">Order #{confirmation.orderId}</p>
           </div>
 
           <Card className="w-full text-left">
@@ -151,14 +149,12 @@ export default function PaymentPage() {
             <CardContent className="flex flex-col gap-3">
               {snapshot.items.map((item) => (
                 <div key={`${item.productId}-${item.size}-${item.color}`} className="flex gap-3 items-center">
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="size-12 rounded-md object-cover bg-muted shrink-0"
-                  />
+                  <img src={item.image} alt={item.name} className="size-12 rounded-md object-cover bg-muted shrink-0" />
                   <div className="flex-1 min-w-0">
                     <p className="text-sm font-medium truncate">{item.name}</p>
-                    <p className="text-xs text-muted-foreground">{item.size} · {item.color} · qty {item.quantity}</p>
+                    <p className="text-xs text-muted-foreground">
+                      {item.size} · {item.color} · qty {item.quantity}
+                    </p>
                   </div>
                   <span className="text-sm font-medium">{formatPrice(item.price * item.quantity)}</span>
                 </div>
@@ -170,7 +166,7 @@ export default function PaymentPage() {
               </div>
               <div className="flex justify-between text-sm">
                 <span className="text-muted-foreground">Shipping</span>
-                <span>{snapshot.shipping === 0 ? "Free" : formatPrice(snapshot.shipping)}</span>
+                <span>{snapshot.shipping === 0 ? 'Free' : formatPrice(snapshot.shipping)}</span>
               </div>
               <Separator />
               <div className="flex justify-between font-semibold">
@@ -230,14 +226,14 @@ export default function PaymentPage() {
               <Field label="Cardholder Name" error={errors.cardholderName}>
                 <Input
                   value={form.cardholderName}
-                  onChange={(e) => handleChange("cardholderName", e.target.value)}
+                  onChange={(e) => handleChange('cardholderName', e.target.value)}
                   placeholder="John Doe"
                 />
               </Field>
               <Field label="Card Number" error={errors.cardNumber}>
                 <Input
                   value={form.cardNumber}
-                  onChange={(e) => handleChange("cardNumber", e.target.value)}
+                  onChange={(e) => handleChange('cardNumber', e.target.value)}
                   placeholder="4242 4242 4242 4242"
                   maxLength={19}
                   inputMode="numeric"
@@ -247,7 +243,7 @@ export default function PaymentPage() {
                 <Field label="Expiry Date" error={errors.expiry}>
                   <Input
                     value={form.expiry}
-                    onChange={(e) => handleChange("expiry", e.target.value)}
+                    onChange={(e) => handleChange('expiry', e.target.value)}
                     placeholder="MM/YY"
                     maxLength={5}
                     inputMode="numeric"
@@ -256,7 +252,7 @@ export default function PaymentPage() {
                 <Field label="CVC" error={errors.cvc}>
                   <Input
                     value={form.cvc}
-                    onChange={(e) => handleChange("cvc", e.target.value)}
+                    onChange={(e) => handleChange('cvc', e.target.value)}
                     placeholder="123"
                     maxLength={3}
                     inputMode="numeric"
@@ -286,19 +282,15 @@ export default function PaymentPage() {
           <CardContent className="flex flex-col gap-3">
             {items.map((item) => (
               <div key={`${item.productId}-${item.size}-${item.color}`} className="flex gap-3">
-                <img
-                  src={item.image}
-                  alt={item.name}
-                  className="size-14 rounded-md object-cover bg-muted shrink-0"
-                />
+                <img src={item.image} alt={item.name} className="size-14 rounded-md object-cover bg-muted shrink-0" />
                 <div className="flex-1 min-w-0">
                   <p className="text-sm font-medium leading-tight truncate">{item.name}</p>
-                  <p className="text-xs text-muted-foreground">{item.size} · {item.color}</p>
+                  <p className="text-xs text-muted-foreground">
+                    {item.size} · {item.color}
+                  </p>
                   <p className="text-xs text-muted-foreground">Qty: {item.quantity}</p>
                 </div>
-                <span className="text-sm font-medium shrink-0">
-                  {formatPrice(item.price * item.quantity)}
-                </span>
+                <span className="text-sm font-medium shrink-0">{formatPrice(item.price * item.quantity)}</span>
               </div>
             ))}
 
@@ -310,7 +302,7 @@ export default function PaymentPage() {
             </div>
             <div className="flex justify-between text-sm">
               <span className="text-muted-foreground">Shipping</span>
-              <span>{shipping === 0 ? "Free" : formatPrice(shipping)}</span>
+              <span>{shipping === 0 ? 'Free' : formatPrice(shipping)}</span>
             </div>
             <Separator />
             <div className="flex justify-between font-semibold">
@@ -324,15 +316,7 @@ export default function PaymentPage() {
   );
 }
 
-function Field({
-  label,
-  error,
-  children,
-}: {
-  label: string;
-  error?: string;
-  children: React.ReactNode;
-}) {
+function Field({ label, error, children }: { label: string; error?: string; children: React.ReactNode }) {
   return (
     <div className="flex flex-col gap-1.5">
       <Label>{label}</Label>

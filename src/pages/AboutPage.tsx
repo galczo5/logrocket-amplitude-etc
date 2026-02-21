@@ -1,37 +1,37 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Separator } from '@/components/ui/separator';
 
 const TECH_STACK = [
-  { layer: "Frontend", tech: "React 19 + TypeScript + Vite" },
-  { layer: "Styling", tech: "Tailwind CSS v4 + shadcn/ui" },
-  { layer: "Routing", tech: "React Router v7" },
-  { layer: "Backend", tech: "Express 5 (in-memory data)" },
+  { layer: 'Frontend', tech: 'React 19 + TypeScript + Vite' },
+  { layer: 'Styling', tech: 'Tailwind CSS v4 + shadcn/ui' },
+  { layer: 'Routing', tech: 'React Router v7' },
+  { layer: 'Backend', tech: 'Express 5 (in-memory data)' }
 ];
 
 const DEMONSTRATES = [
   {
-    term: "Session replay",
-    detail: "Record and replay user sessions to understand real behavior (e.g. LogRocket)",
+    term: 'Session replay',
+    detail: 'Record and replay user sessions to understand real behavior (e.g. LogRocket)'
   },
   {
-    term: "Event tracking",
-    detail: "Capture user interactions and build funnels (e.g. Amplitude)",
+    term: 'Event tracking',
+    detail: 'Capture user interactions and build funnels (e.g. Amplitude)'
   },
   {
-    term: "User identification",
-    detail: "Associate analytics events with logged-in users",
+    term: 'User identification',
+    detail: 'Associate analytics events with logged-in users'
   },
   {
-    term: "Conversion analytics",
-    detail: "Measure drop-off across the checkout funnel",
-  },
+    term: 'Conversion analytics',
+    detail: 'Measure drop-off across the checkout funnel'
+  }
 ];
 
 const NOTES = [
-  "All product data is mocked — no real inventory exists",
-  "Login accepts any email and password (no real authentication)",
-  "No real payments are processed",
-  "Data resets on every server restart",
+  'All product data is mocked — no real inventory exists',
+  'Login accepts any email and password (no real authentication)',
+  'No real payments are processed',
+  'Data resets on every server restart'
 ];
 
 export default function AboutPage() {
@@ -40,9 +40,9 @@ export default function AboutPage() {
       <div>
         <h1 className="text-4xl font-bold tracking-tight mb-4">About This App</h1>
         <p className="text-muted-foreground text-lg leading-relaxed">
-          This is a demo e-commerce application built to showcase user monitoring and analytics
-          integrations. It simulates a real t-shirt shop — with product listings, a cart, checkout,
-          and user authentication — but all data is mocked and no real transactions take place.
+          This is a demo e-commerce application built to showcase user monitoring and analytics integrations. It
+          simulates a real t-shirt shop — with product listings, a cart, checkout, and user authentication — but all
+          data is mocked and no real transactions take place.
         </p>
       </div>
 

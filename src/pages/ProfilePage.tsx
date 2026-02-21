@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react";
-import { useNavigate, Link } from "react-router";
-import { useAuth } from "@/context/AuthContext";
-import { api } from "@/lib/api";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
-import { Spinner } from "@/components/ui/spinner";
+import { useEffect, useState } from 'react';
+import { useNavigate, Link } from 'react-router';
+import { useAuth } from '@/context/AuthContext';
+import { api } from '@/lib/api';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Separator } from '@/components/ui/separator';
+import { Spinner } from '@/components/ui/spinner';
 
 interface OrderItem {
   productId: string;
@@ -18,7 +18,7 @@ interface OrderItem {
 interface Order {
   id: string;
   userId: string;
-  status: "confirmed" | "pending";
+  status: 'confirmed' | 'pending';
   createdAt: string;
   items: OrderItem[];
   shipping: {
@@ -31,10 +31,10 @@ interface Order {
 }
 
 function formatDate(iso: string) {
-  return new Date(iso).toLocaleDateString("en-US", {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
+  return new Date(iso).toLocaleDateString('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric'
   });
 }
 
@@ -50,11 +50,11 @@ export default function ProfilePage() {
 
   useEffect(() => {
     if (!isAuthenticated) {
-      navigate("/login", { state: { from: "/profile" }, replace: true });
+      navigate('/login', { state: { from: '/profile' }, replace: true });
       return;
     }
     api
-      .get<{ orders: Order[] }>("/orders")
+      .get<{ orders: Order[] }>('/orders')
       .then(({ orders }) => setOrders(orders))
       .catch(console.error)
       .finally(() => setLoading(false));
@@ -62,12 +62,12 @@ export default function ProfilePage() {
 
   function handleSignOut() {
     logout();
-    navigate("/");
+    navigate('/');
   }
 
   if (!isAuthenticated) return null;
 
-  const initials = user?.name.charAt(0).toUpperCase() ?? "?";
+  const initials = user?.name.charAt(0).toUpperCase() ?? '?';
 
   return (
     <div className="max-w-5xl mx-auto px-8 py-12 flex gap-8">
@@ -76,11 +76,7 @@ export default function ProfilePage() {
         <Card>
           <CardContent className="pt-6 flex flex-col items-center gap-4">
             {user?.avatar ? (
-              <img
-                src={user.avatar}
-                alt={user.name}
-                className="size-20 rounded-full object-cover"
-              />
+              <img src={user.avatar} alt={user.name} className="size-20 rounded-full object-cover" />
             ) : (
               <div className="size-20 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-3xl font-semibold">
                 {initials}
@@ -91,11 +87,7 @@ export default function ProfilePage() {
               <p className="text-sm text-muted-foreground">{user?.email}</p>
               <p className="text-xs text-muted-foreground mt-1">ID: {user?.id}</p>
             </div>
-            <Button
-              variant="outline"
-              className="w-full mt-2"
-              onClick={handleSignOut}
-            >
+            <Button variant="outline" className="w-full mt-2" onClick={handleSignOut}>
               Sign Out
             </Button>
           </CardContent>
@@ -123,30 +115,19 @@ export default function ProfilePage() {
               <CardHeader className="pb-2">
                 <div className="flex items-center justify-between">
                   <CardTitle className="text-base">Order #{order.id}</CardTitle>
-                  <Badge
-                    variant={order.status === "confirmed" ? "default" : "secondary"}
-                  >
-                    {order.status}
-                  </Badge>
+                  <Badge variant={order.status === 'confirmed' ? 'default' : 'secondary'}>{order.status}</Badge>
                 </div>
-                <p className="text-sm text-muted-foreground">
-                  Placed on: {formatDate(order.createdAt)}
-                </p>
+                <p className="text-sm text-muted-foreground">Placed on: {formatDate(order.createdAt)}</p>
               </CardHeader>
               <CardContent className="flex flex-col gap-2">
                 <Separator />
                 <div className="flex flex-col gap-1">
                   {order.items.map((item) => (
-                    <div
-                      key={item.productId}
-                      className="flex justify-between text-sm"
-                    >
+                    <div key={item.productId} className="flex justify-between text-sm">
                       <span>
                         {item.name} × {item.quantity}
                       </span>
-                      <span className="text-muted-foreground">
-                        {formatPrice(item.price * item.quantity)}
-                      </span>
+                      <span className="text-muted-foreground">{formatPrice(item.price * item.quantity)}</span>
                     </div>
                   ))}
                 </div>

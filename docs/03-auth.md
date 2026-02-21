@@ -42,6 +42,7 @@ UI built with existing shadcn components:
 - **button** — submit button
 
 Layout:
+
 - Centered on the page (max-w-md, mx-auto)
 - Card title: "Sign In"
 - Card description: "Enter any email and password to continue"
@@ -51,6 +52,7 @@ Layout:
 - Basic client-side validation (both fields required)
 
 On submit:
+
 1. Call `authContext.login(email, password)`
 2. On success, navigate to the page the user came from (using `location.state?.from` or default to `/`)
 3. Show spinner on the button while the request is in flight
@@ -64,6 +66,7 @@ On submit:
 ### 3.4 API Utility (`src/lib/api.ts`)
 
 Create a thin fetch wrapper that:
+
 - Prepends `/api` to paths
 - Includes `Authorization: Bearer <token>` header when token exists
 - Parses JSON responses

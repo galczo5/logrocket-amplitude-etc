@@ -23,6 +23,7 @@ yarn add react-router
 Create a shared layout that wraps every page:
 
 **`AppLayout.tsx`**
+
 - Uses the existing `navigation-menu` component for the top nav
 - Logo/brand name on the left ("T-Shirt Shop")
 - Nav links: Home, Products

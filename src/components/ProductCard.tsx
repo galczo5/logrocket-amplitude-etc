@@ -1,8 +1,8 @@
-import { Link } from "react-router";
-import { StarIcon } from "lucide-react";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import type { Product } from "@/types/product";
+import { Link } from 'react-router';
+import { StarIcon } from 'lucide-react';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import type { Product } from '@/types/product';
 
 function formatPrice(cents: number) {
   return `$${(cents / 100).toFixed(2)}`;
@@ -25,9 +25,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         </div>
         <CardHeader className="pt-4 pb-1">
           <div className="flex items-start justify-between gap-2">
-            <CardTitle className="text-sm font-medium leading-snug line-clamp-2">
-              {product.name}
-            </CardTitle>
+            <CardTitle className="text-sm font-medium leading-snug line-clamp-2">{product.name}</CardTitle>
             <Badge variant="secondary" className="shrink-0 capitalize text-xs">
               {product.category}
             </Badge>

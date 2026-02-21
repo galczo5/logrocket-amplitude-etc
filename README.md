@@ -40,15 +40,15 @@ yarn server
 
 ## Scripts
 
-| Script                | Description                          |
-| --------------------- | ------------------------------------ |
-| `yarn dev`            | Start the Vite dev server            |
-| `yarn build`          | Type-check and build for production  |
-| `yarn preview`        | Preview the production build         |
-| `yarn server`         | Start the Express backend            |
-| `yarn lint`           | Run ESLint                           |
-| `yarn format`         | Format all files with Prettier       |
-| `yarn format:check`   | Check formatting without writing     |
+| Script              | Description                         |
+| ------------------- | ----------------------------------- |
+| `yarn dev`          | Start the Vite dev server           |
+| `yarn build`        | Type-check and build for production |
+| `yarn preview`      | Preview the production build        |
+| `yarn server`       | Start the Express backend           |
+| `yarn lint`         | Run ESLint                          |
+| `yarn format`       | Format all files with Prettier      |
+| `yarn format:check` | Check formatting without writing    |
 
 ## Important Notes
 

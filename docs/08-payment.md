@@ -40,16 +40,17 @@ A simple step indicator shown on both checkout and payment pages (using **progre
 
 Uses **input**, **label** components:
 
-| Field | Type | Validation |
-|-------|------|------------|
-| Cardholder Name | text | Required |
-| Card Number | text | Required, 16 digits (formatted as XXXX XXXX XXXX XXXX) |
-| Expiry Date | text | Required, MM/YY format |
-| CVC | text | Required, 3 digits |
+| Field           | Type | Validation                                             |
+| --------------- | ---- | ------------------------------------------------------ |
+| Cardholder Name | text | Required                                               |
+| Card Number     | text | Required, 16 digits (formatted as XXXX XXXX XXXX XXXX) |
+| Expiry Date     | text | Required, MM/YY format                                 |
+| CVC             | text | Required, 3 digits                                     |
 
 All validation is client-side only (no real payment processing).
 
 **Prefilled mock values:**
+
 - Cardholder Name: `John Doe`
 - Card Number: `4242 4242 4242 4242`
 - Expiry Date: `12/28`
@@ -58,6 +59,7 @@ All validation is client-side only (no real payment processing).
 The user can edit these values but they are pre-populated so the checkout flow can be tested quickly.
 
 Input masking:
+
 - Card number: auto-insert spaces every 4 digits
 - Expiry: auto-insert `/` after 2 digits
 - CVC: limit to 3 characters

@@ -30,19 +30,19 @@ interface Product {
   id: string;
   name: string;
   description: string;
-  price: number;          // in cents (e.g. 2999 = $29.99)
-  image: string;          // placeholder path, will be replaced later
-  category: string;       // "men" | "women" | "unisex"
-  sizes: string[];        // ["S", "M", "L", "XL"]
+  price: number; // in cents (e.g. 2999 = $29.99)
+  image: string; // placeholder path, will be replaced later
+  category: string; // "men" | "women" | "unisex"
+  sizes: string[]; // ["S", "M", "L", "XL"]
   colors: Color[];
   featured: boolean;
-  rating: number;         // 1-5
+  rating: number; // 1-5
   reviewCount: number;
 }
 
 interface Color {
-  name: string;           // "Black", "White", etc.
-  hex: string;            // "#000000"
+  name: string; // "Black", "White", etc.
+  hex: string; // "#000000"
 }
 ```
 
@@ -52,21 +52,21 @@ Include a variety: graphic tees, plain tees, polos, v-necks. Mix of categories, 
 
 ```ts
 const mockUser = {
-  id: "user-1",
-  email: "user@example.com",
-  name: "John Doe",
+  id: 'user-1',
+  email: 'user@example.com',
+  name: 'John Doe',
   avatar: null
 };
 ```
 
 ### 2.3 API Endpoints
 
-| Method | Path | Description |
-|--------|------|-------------|
-| `GET` | `/api/products` | List all products. Supports query params: `category`, `size`, `color`, `minPrice`, `maxPrice`, `sort` (`price-asc`, `price-desc`, `rating`), `search` |
-| `GET` | `/api/products/:id` | Get single product by ID. Returns 404 if not found |
-| `POST` | `/api/auth/login` | Accepts `{ email, password }`. Always returns `{ user, token: "mock-jwt-token" }` regardless of credentials |
-| `POST` | `/api/orders` | Accepts order payload `{ items, shipping, payment }`. Returns `{ orderId, status: "confirmed" }` with a generated order ID |
+| Method | Path                | Description                                                                                                                                           |
+| ------ | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `GET`  | `/api/products`     | List all products. Supports query params: `category`, `size`, `color`, `minPrice`, `maxPrice`, `sort` (`price-asc`, `price-desc`, `rating`), `search` |
+| `GET`  | `/api/products/:id` | Get single product by ID. Returns 404 if not found                                                                                                    |
+| `POST` | `/api/auth/login`   | Accepts `{ email, password }`. Always returns `{ user, token: "mock-jwt-token" }` regardless of credentials                                           |
+| `POST` | `/api/orders`       | Accepts order payload `{ items, shipping, payment }`. Returns `{ orderId, status: "confirmed" }` with a generated order ID                            |
 
 ### 2.4 Filtering Logic (`GET /api/products`)
 

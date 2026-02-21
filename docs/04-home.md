@@ -24,13 +24,14 @@ Full-width section at the top of the page:
 
 Row of 3 **card** components, one per category:
 
-| Card | Label | Link |
-|------|-------|------|
-| Men's Collection | "Men" | `/products?category=men` |
-| Women's Collection | "Women" | `/products?category=women` |
-| Unisex Collection | "Unisex" | `/products?category=unisex` |
+| Card               | Label    | Link                        |
+| ------------------ | -------- | --------------------------- |
+| Men's Collection   | "Men"    | `/products?category=men`    |
+| Women's Collection | "Women"  | `/products?category=women`  |
+| Unisex Collection  | "Unisex" | `/products?category=unisex` |
 
 Each card:
+
 - Placeholder image area (colored background with the category name)
 - Category name as card title
 - Brief description

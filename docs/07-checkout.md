@@ -29,7 +29,7 @@ interface CartItem {
 
 interface CartContextValue {
   items: CartItem[];
-  addItem: (item: Omit<CartItem, "quantity">) => void;
+  addItem: (item: Omit<CartItem, 'quantity'>) => void;
   removeItem: (productId: string, size: string, color: string) => void;
   updateQuantity: (productId: string, size: string, color: string, quantity: number) => void;
   clearCart: () => void;
@@ -45,6 +45,7 @@ interface CartContextValue {
 ### 7.2 Header Cart Badge
 
 Update the header (from Stage 1):
+
 - Cart icon shows **badge** with `totalItems` count
 - Badge hidden when count is 0
 - Clicking the cart icon navigates to `/checkout`
@@ -82,16 +83,17 @@ Uses **card**, **separator**, and **table** components:
 
 Uses **input**, **label**, **native-select** components:
 
-| Field | Type | Required |
-|-------|------|----------|
-| Full Name | text input | Yes |
-| Email | email input | Yes |
-| Address | text input | Yes |
-| City | text input | Yes |
-| State | native-select (list of US states) | Yes |
-| ZIP Code | text input | Yes |
+| Field     | Type                              | Required |
+| --------- | --------------------------------- | -------- |
+| Full Name | text input                        | Yes      |
+| Email     | email input                       | Yes      |
+| Address   | text input                        | Yes      |
+| City      | text input                        | Yes      |
+| State     | native-select (list of US states) | Yes      |
+| ZIP Code  | text input                        | Yes      |
 
 Validation:
+
 - All fields required
 - Email format validation
 - ZIP code: 5 digits
@@ -100,11 +102,13 @@ Validation:
 ### 7.6 Empty Cart State
 
 If cart is empty when visiting `/checkout`:
+
 - Show message: "Your cart is empty"
 - **button** — "Continue Shopping" linking to `/products`
 
 ### 7.7 Navigation
 
 On form submit (validation passes):
+
 - Store shipping data in state/context (or pass via router state)
 - Navigate to `/checkout/payment`

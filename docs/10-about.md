@@ -54,12 +54,12 @@ Bullet list:
 
 **Tech Stack table** (mirrors the overview):
 
-| Layer | Technology |
-|-------|-----------|
+| Layer    | Technology                   |
+| -------- | ---------------------------- |
 | Frontend | React 19 + TypeScript + Vite |
-| Styling | Tailwind CSS v4 + shadcn/ui |
-| Routing | React Router v7 |
-| Backend | Express 5 (in-memory data) |
+| Styling  | Tailwind CSS v4 + shadcn/ui  |
+| Routing  | React Router v7              |
+| Backend  | Express 5 (in-memory data)   |
 
 **"Important Notes" section:**
 
