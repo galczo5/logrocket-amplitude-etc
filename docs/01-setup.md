@@ -7,8 +7,8 @@
 - [x] Set up React Router with all routes
 - [x] Create placeholder page components
 - [x] Add navigation menu to header
-- [ ] Configure Vite proxy to forward `/api` requests to Express server
-- [ ] Verify all routes render correctly
+- [x] Configure Vite proxy to forward `/api` requests to Express server
+- [x] Verify all routes render correctly
 
 ## Details
 
