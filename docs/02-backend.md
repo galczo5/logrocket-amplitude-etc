@@ -2,9 +2,9 @@
 
 ## Checklist
 
-- [ ] Create Express server entry point (`server/index.ts`)
-- [ ] Create mocked product data (`server/data/products.ts`)
-- [ ] Create mocked user data (`server/data/users.ts`)
+- [x] Create Express server entry point (`server/index.ts`)
+- [x] Create mocked product data (`server/data/products.ts`)
+- [x] Create mocked user data (`server/data/users.ts`)
 - [ ] Implement `GET /api/products` endpoint (with query params for filtering)
 - [ ] Implement `GET /api/products/:id` endpoint
 - [ ] Implement `POST /api/auth/login` endpoint
