@@ -2,12 +2,12 @@
 
 ## Checklist
 
-- [ ] Build hero banner section with CTA button
-- [ ] Build category cards section (Men, Women, Unisex)
-- [ ] Fetch and display featured products grid
-- [ ] Create reusable `ProductCard` component
-- [ ] Add "Shop Now" links that navigate to the products page with pre-applied filters
-- [ ] Verify desktop layout looks good (desktop-only, no responsive needed)
+- [x] Build hero banner section with CTA button
+- [x] Build category cards section (Men, Women, Unisex)
+- [x] Fetch and display featured products grid
+- [x] Create reusable `ProductCard` component
+- [x] Add "Shop Now" links that navigate to the products page with pre-applied filters
+- [x] Verify desktop layout looks good (desktop-only, no responsive needed)
 
 ## Details
 
