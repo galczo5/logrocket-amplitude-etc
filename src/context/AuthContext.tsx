@@ -43,7 +43,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         email: user.email,
         name: user.name,
         avatar: user.avatar,
-        loginTime: new Date().toISOString(),
+        loginTime: new Date().toISOString()
       });
     }
   }, [user, token]);

@@ -30,6 +30,7 @@
 ## Overview
 
 Integrate three user monitoring and analytics tools into the T-Shirt Shop application:
+
 - **Amplitude** - Product analytics and user behavior tracking
 - **LogRocket** - Session replay and error tracking
 - **Hotjar** - User feedback, heatmaps, and recordings
@@ -47,7 +48,7 @@ Create a centralized configuration file that exports all third-party service cre
 export const KEYS = {
   AMPLITUDE_API_KEY: import.meta.env.VITE_AMPLITUDE_API_KEY || '',
   LOGROCKET_APP_ID: import.meta.env.VITE_LOGROCKET_APP_ID || '',
-  HOTJAR_SITE_ID: import.meta.env.VITE_HOTJAR_SITE_ID || '',
+  HOTJAR_SITE_ID: import.meta.env.VITE_HOTJAR_SITE_ID || ''
 };
 ```
 
@@ -76,16 +77,19 @@ VITE_HOTJAR_SITE_ID=<your-hotjar-site-id>
 **Integration Point:** Initialize in `src/main.tsx` before app renders
 
 **Key Requirements:**
+
 - Initializes with App ID (public key, safe in frontend)
 - Captures network requests, console logs, DOM mutations
 - Records user sessions for playback
 - No PII tracking by default (can be configured)
 
 **Dependencies:**
+
 - `logrocket` (core SDK)
 - `logrocket-react` (React plugin for component filtering)
 
 **Initialization Code:**
+
 ```typescript
 import LogRocket from 'logrocket';
 import setupLogRocketReact from 'logrocket-react';
@@ -105,6 +109,7 @@ if (KEYS.LOGROCKET_APP_ID) {
 **Integration Point:** Initialize in `src/main.tsx` after LogRocket
 
 **Key Requirements:**
+
 - Initializes with API Key
 - **Autocapture enabled** - automatically tracks common events (page views, clicks, form submissions)
 - Custom events for domain-specific tracking (login, checkout, etc.)
@@ -112,25 +117,28 @@ if (KEYS.LOGROCKET_APP_ID) {
 - Official TypeScript SDK (not the deprecated react-amplitude)
 
 **Dependencies:**
+
 - `@amplitude/analytics-browser` (official browser SDK 2.0)
 
 **Initialization Code:**
+
 ```typescript
 import * as amplitude from '@amplitude/analytics-browser';
 
 if (KEYS.AMPLITUDE_API_KEY) {
   amplitude.init(KEYS.AMPLITUDE_API_KEY, {
     autocapture: {
-      pageViews: true,        // Track page views
+      pageViews: true, // Track page views
       formInteractions: true, // Track form submissions
-      fileDownloads: true,    // Track file downloads
-      pageLeaves: true,       // Track when users leave the page
-    },
+      fileDownloads: true, // Track file downloads
+      pageLeaves: true // Track when users leave the page
+    }
   });
 }
 ```
 
 **Auto-Tracked Events:**
+
 - Page views
 - Button clicks
 - Form interactions
@@ -138,6 +146,7 @@ if (KEYS.AMPLITUDE_API_KEY) {
 - File downloads
 
 **Custom Events to Track:**
+
 - User authentication (login)
 - Product views (enhanced tracking)
 - Add to cart / Remove from cart
@@ -154,15 +163,18 @@ if (KEYS.AMPLITUDE_API_KEY) {
 **Integration Point:** Initialize in `src/main.tsx` after Amplitude
 
 **Key Requirements:**
+
 - Initializes with Site ID (from your Hotjar account)
 - Snippet Version (usually 6 for current tracking code)
 - Captures heatmaps, form analytics, user feedback
 - Optional: debug mode for testing
 
 **Dependencies:**
+
 - `react-hotjar` (React wrapper for Hotjar)
 
 **Initialization Code:**
+
 ```typescript
 import { initialize } from 'react-hotjar';
 
@@ -170,7 +182,7 @@ if (KEYS.HOTJAR_SITE_ID) {
   initialize({
     id: parseInt(KEYS.HOTJAR_SITE_ID),
     sv: 6,
-    debug: import.meta.env.DEV,
+    debug: import.meta.env.DEV
   });
 }
 ```
@@ -182,16 +194,19 @@ if (KEYS.HOTJAR_SITE_ID) {
 ### Phase 1: Foundation Setup
 
 #### Task 1.1: Create Keys Configuration File
+
 - [ ] Create `src/keys.ts` with KEYS export
 - [ ] Create `.env.example` with placeholder values
 - [ ] Add environment variables to `.env` (local development only)
 
 #### Task 1.2: Install Dependencies
+
 ```bash
 yarn add logrocket logrocket-react @amplitude/analytics-browser react-hotjar
 ```
 
 #### Task 1.3: Initialize in main.tsx
+
 - [ ] Import KEYS from `src/keys.ts`
 - [ ] Initialize LogRocket first
 - [ ] Initialize Amplitude second
@@ -202,18 +217,22 @@ yarn add logrocket logrocket-react @amplitude/analytics-browser react-hotjar
 ### Phase 2: Event Tracking Setup
 
 #### Task 2.1: Create Analytics Utilities
+
 - [ ] Create `src/lib/analytics.ts` with helper functions:
   - `trackEvent(name: string, properties?: Record<string, any>)` - for custom events
   - `setUserId(userId: string)` - identify users in Amplitude/LogRocket
   - `setUserProperties(properties: Record<string, any>)` - set user attributes
 
 #### Task 2.2: Integrate with Auth Context
+
 - [ ] Update `src/context/AuthContext.tsx` to call `setUserId()` on login
 - [ ] Track custom "User Login" event on successful authentication with user properties (email, tier, etc.)
 
 #### Task 2.3: Track Domain-Specific Events (Autocapture Handles Basic Events)
+
 With autocapture enabled, clicks, form submissions, and page views are tracked automatically.
 Add custom tracking for:
+
 - [ ] Checkout Page: Track "Checkout Started" event with cart value
 - [ ] Payment: Track "Payment Completed" and "Order Placed" events with order details
 - [ ] Product Detail Page: Track "Product Selected" with product ID/name
@@ -223,6 +242,7 @@ Add custom tracking for:
 ### Phase 3: Configuration & Testing
 
 #### Task 3.1: Environment Configuration
+
 - [ ] Set up dev environment variables
 - [ ] Create production environment variable instructions
 - [ ] Document where to find API keys for each service:
@@ -231,6 +251,7 @@ Add custom tracking for:
   - Hotjar: [https://app.hotjar.com](https://app.hotjar.com)
 
 #### Task 3.2: Testing & Validation
+
 - [ ] Test in development with debug logs enabled
 - [ ] Verify events appear in each service's dashboard
 - [ ] Check session replay in LogRocket
@@ -238,6 +259,7 @@ Add custom tracking for:
 - [ ] Confirm funnel analysis data in Amplitude
 
 #### Task 3.3: Documentation
+
 - [ ] Document all tracked events
 - [ ] Create developer guide for adding new events
 - [ ] Add setup instructions in README
@@ -245,12 +267,14 @@ Add custom tracking for:
 ## Development Setup
 
 See [ENV_SETUP.md](./ENV_SETUP.md) for complete instructions on:
+
 - Getting API keys for each service
 - Setting up your local `.env` file
 - How environment variables work in development and production
 - Troubleshooting common issues
 
 **Quick summary:**
+
 1. Copy `.env.example` to `.env`
 2. Follow ENV_SETUP.md to get your API keys
 3. Fill in `.env` with your keys
@@ -259,19 +283,23 @@ See [ENV_SETUP.md](./ENV_SETUP.md) for complete instructions on:
 ## Key Considerations
 
 ### Performance
+
 - LogRocket and Hotjar load external scripts - consider lazy initialization
 - Amplitude is lightweight - safe to initialize immediately
 
 ### Privacy & GDPR
+
 - All three services support privacy controls
 - Consider implementing consent banner before initializing
 - Document data collection in privacy policy
 
 ### Error Handling
+
 - If any service fails to initialize, app should continue working
 - Log initialization errors but don't break the app
 
 ### Data Storage
+
 - LogRocket: Records sessions up to 1 hour by default
 - Amplitude: Sessions tracked across pages
 - Hotjar: Continuous recording (up to plan limits)

@@ -31,8 +31,8 @@ export function initializeAnalytics() {
           pageViews: true,
           formInteractions: true,
           fileDownloads: true,
-          pageLeaves: true,
-        },
+          pageLeaves: true
+        }
       });
       console.log('[Analytics] Amplitude initialized with autocapture');
     } catch (error) {
@@ -46,7 +46,7 @@ export function initializeAnalytics() {
       initializeHotjar({
         id: parseInt(KEYS.HOTJAR_SITE_ID),
         sv: 6,
-        debug: import.meta.env.DEV,
+        debug: import.meta.env.DEV
       });
       console.log('[Analytics] Hotjar initialized');
     } catch (error) {
@@ -60,12 +60,12 @@ export function initializeAnalytics() {
 
   // Initialize Fingerprint for anonymous visitor tracking (free, client-side)
   FingerprintJS.load()
-    .then(fp => fp.get())
-    .then(result => {
+    .then((fp) => fp.get())
+    .then((result) => {
       setFingerprintId(result.visitorId, result.confidence.score);
       console.log('[Analytics] Fingerprint initialized:', result.visitorId);
     })
-    .catch(error => {
+    .catch((error) => {
       console.error('[Analytics] Failed to initialize Fingerprint:', error);
     });
 }

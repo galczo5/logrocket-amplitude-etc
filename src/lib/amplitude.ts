@@ -39,7 +39,7 @@ export const setUserProperties = (properties: Record<string, unknown>) => {
 export const trackPageView = (pageName: string) => {
   trackEvent('Page Viewed', {
     page: pageName,
-    timestamp: new Date().toISOString(),
+    timestamp: new Date().toISOString()
   });
 };
 
@@ -51,7 +51,7 @@ export const trackAddToCart = (productId: string, productName: string, price: nu
     productId,
     productName,
     price,
-    timestamp: new Date().toISOString(),
+    timestamp: new Date().toISOString()
   });
 };
 
@@ -63,23 +63,19 @@ export const trackRemoveFromCart = (productId: string, productName: string, pric
     productId,
     productName,
     price,
-    timestamp: new Date().toISOString(),
+    timestamp: new Date().toISOString()
   });
 };
 
 /**
  * Track product selection/view
  */
-export const trackProductSelected = (
-  productId: string,
-  productName: string,
-  category: string
-) => {
+export const trackProductSelected = (productId: string, productName: string, category: string) => {
   trackEvent('Product Selected', {
     productId,
     productName,
     category,
-    timestamp: new Date().toISOString(),
+    timestamp: new Date().toISOString()
   });
 };
 
@@ -90,7 +86,7 @@ export const trackCheckoutStarted = (cartValue: number, itemCount: number) => {
   trackEvent('Checkout Started', {
     cartValue,
     itemCount,
-    timestamp: new Date().toISOString(),
+    timestamp: new Date().toISOString()
   });
 };
 
@@ -102,7 +98,7 @@ export const trackOrderPlaced = (orderId: string, orderValue: number, itemCount:
     orderId,
     orderValue,
     itemCount,
-    timestamp: new Date().toISOString(),
+    timestamp: new Date().toISOString()
   });
 };
 
@@ -113,7 +109,7 @@ export const trackUserLogin = (userId: string, email: string) => {
   trackEvent('User Login', {
     userId,
     email,
-    timestamp: new Date().toISOString(),
+    timestamp: new Date().toISOString()
   });
 };
 
@@ -124,6 +120,6 @@ export const trackSearch = (query: string, filters?: Record<string, unknown>) =>
   trackEvent('Search', {
     query,
     filters,
-    timestamp: new Date().toISOString(),
+    timestamp: new Date().toISOString()
   });
 };

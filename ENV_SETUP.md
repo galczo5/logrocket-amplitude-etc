@@ -5,6 +5,7 @@ This guide explains how to set up environment variables for the analytics servic
 ## Quick Start
 
 1. Copy `.env.example` to `.env`:
+
    ```bash
    cp .env.example .env
    ```
@@ -83,7 +84,7 @@ This guide explains how to set up environment variables for the analytics servic
 4. Go to **Settings → Site Configuration** or **Tracking Code**
 5. Find the **Site ID** in the code snippet:
    ```javascript
-   hj('site', XXXXX);  // <- This is your Site ID
+   hj('site', XXXXX); // <- This is your Site ID
    ```
 6. Paste it in `.env`:
    ```
@@ -121,6 +122,7 @@ VITE_HOTJAR_SITE_ID=987654
 - Environment variables are available in your code as `import.meta.env.VITE_*`
 
 Example in code:
+
 ```typescript
 const amplitudeKey = import.meta.env.VITE_AMPLITUDE_API_KEY;
 ```
@@ -133,7 +135,7 @@ const amplitudeKey = import.meta.env.VITE_AMPLITUDE_API_KEY;
   - **Docker:** Pass as build arguments or runtime environment variables
   - **Server:** Set as system environment variables
 
-### Important: VITE_ Prefix
+### Important: VITE\_ Prefix
 
 - All variables must start with `VITE_` to be accessible in the browser
 - This is a Vite requirement for security (prevents accidental exposure)
@@ -167,15 +169,18 @@ yarn dev
 ## Troubleshooting
 
 ### "Environment variable is undefined"
+
 - Ensure the variable is in `.env` (not `.env.example`)
 - Check the name matches exactly (including `VITE_` prefix)
 - Restart the dev server after adding new variables
 
 ### "Blank/missing API key in production"
+
 - Set environment variables in your deployment platform
 - The `.env` file is not deployed (by design, for security)
 
 ### "I accidentally committed .env to git"
+
 1. Remove it from git history:
    ```bash
    git rm --cached .env
@@ -185,6 +190,7 @@ yarn dev
 3. Generate new keys and update your local `.env`
 
 ### "I don't have API keys yet"
+
 - Create free accounts on [Amplitude](https://amplitude.com), [LogRocket](https://logrocket.com), and [Hotjar](https://hotjar.com)
 - You can use placeholder values or empty strings during development
 - The app will work without them (services just won't initialize)

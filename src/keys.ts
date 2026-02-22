@@ -7,5 +7,5 @@
 export const KEYS = {
   AMPLITUDE_API_KEY: import.meta.env.VITE_AMPLITUDE_API_KEY || '',
   LOGROCKET_APP_ID: import.meta.env.VITE_LOGROCKET_APP_ID || '',
-  HOTJAR_SITE_ID: import.meta.env.VITE_HOTJAR_SITE_ID || '',
+  HOTJAR_SITE_ID: import.meta.env.VITE_HOTJAR_SITE_ID || ''
 };

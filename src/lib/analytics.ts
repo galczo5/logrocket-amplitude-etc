@@ -39,17 +39,17 @@ export const setUserProperties = (properties: Record<string, unknown>) => {
 export const setFingerprintId = (visitorId: string, confidence: number) => {
   amplitudeLib.setUserProperties({
     fingerprintVisitorId: visitorId,
-    fingerprintConfidence: confidence,
+    fingerprintConfidence: confidence
   });
   logRocketLib.setUserContext({
     fingerprintVisitorId: visitorId,
-    fingerprintConfidence: confidence,
+    fingerprintConfidence: confidence
   });
   // Hotjar identify API for visitor tagging
   if (typeof window !== 'undefined' && (window as { hj?: Function }).hj) {
     (window as { hj?: Function }).hj!('identify', null, {
       fingerprint_visitor_id: visitorId,
-      fingerprint_confidence: confidence,
+      fingerprint_confidence: confidence
     });
   }
 };
@@ -68,7 +68,7 @@ export const trackPageView = (pageName: string) => {
   amplitudeLib.trackPageView(pageName);
   logRocketLib.trackEvent('Page Viewed', {
     page: pageName,
-    timestamp: new Date().toISOString(),
+    timestamp: new Date().toISOString()
   });
 };
 
@@ -91,11 +91,7 @@ export const trackRemoveFromCart = (productId: string, productName: string, pric
 /**
  * Track product selection/view
  */
-export const trackProductSelected = (
-  productId: string,
-  productName: string,
-  category: string
-) => {
+export const trackProductSelected = (productId: string, productName: string, category: string) => {
   amplitudeLib.trackProductSelected(productId, productName, category);
   logRocketLib.trackEvent('Product Selected', { productId, productName, category });
 };

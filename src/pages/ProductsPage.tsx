@@ -101,7 +101,7 @@ export default function ProductsPage() {
           colors: filters.colors,
           minPrice: filters.minPrice,
           maxPrice: filters.maxPrice,
-          sort,
+          sort
         });
       }
     }, 300);

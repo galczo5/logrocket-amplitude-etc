@@ -50,6 +50,7 @@ function handleAddToWishlist() {
 ### Step 3: Document it
 
 Add the event to `docs/analytics-events-reference.md` with:
+
 - Event name
 - Source file and trigger
 - All properties with types and examples
@@ -88,7 +89,7 @@ import { trackEvent } from '@/lib/analytics';
 
 trackEvent('Promo Banner Clicked', {
   bannerId: 'summer-sale',
-  position: 'hero',
+  position: 'hero'
 });
 ```
 
@@ -107,7 +108,7 @@ import { setUserProperties } from '@/lib/analytics';
 
 setUserProperties({
   subscriptionTier: 'premium',
-  preferredCategory: 'men',
+  preferredCategory: 'men'
 });
 ```
 
@@ -162,23 +163,23 @@ This should be rare — if you find yourself doing this often, consider adding t
 
 ## Conventions
 
-| Convention | Example |
-|---|---|
-| Event names: Title Case | `"Add to Cart"`, `"Order Placed"` |
-| Page names: Title Case | `"Home"`, `"Product Detail"` |
-| Prices: always in dollars (not cents) | `trackAddToCart(id, name, price / 100)` |
-| IDs: pass the raw ID string | `trackProductSelected(product.id, ...)` |
-| Timestamps: auto-added by amplitude.ts | Don't pass `timestamp` manually |
+| Convention                             | Example                                 |
+| -------------------------------------- | --------------------------------------- |
+| Event names: Title Case                | `"Add to Cart"`, `"Order Placed"`       |
+| Page names: Title Case                 | `"Home"`, `"Product Detail"`            |
+| Prices: always in dollars (not cents)  | `trackAddToCart(id, name, price / 100)` |
+| IDs: pass the raw ID string            | `trackProductSelected(product.id, ...)` |
+| Timestamps: auto-added by amplitude.ts | Don't pass `timestamp` manually         |
 
 ---
 
 ## Files Reference
 
-| File | Purpose |
-|---|---|
-| `src/lib/analytics.ts` | Unified API — import from here in components |
-| `src/lib/amplitude.ts` | Amplitude-specific implementation |
-| `src/lib/logrocket.ts` | LogRocket-specific implementation |
-| `src/lib/initializeAnalytics.ts` | Service initialization (called once in main.tsx) |
-| `src/keys.ts` | API key configuration from environment variables |
-| `docs/analytics-events-reference.md` | All tracked events with properties |
+| File                                 | Purpose                                          |
+| ------------------------------------ | ------------------------------------------------ |
+| `src/lib/analytics.ts`               | Unified API — import from here in components     |
+| `src/lib/amplitude.ts`               | Amplitude-specific implementation                |
+| `src/lib/logrocket.ts`               | LogRocket-specific implementation                |
+| `src/lib/initializeAnalytics.ts`     | Service initialization (called once in main.tsx) |
+| `src/keys.ts`                        | API key configuration from environment variables |
+| `docs/analytics-events-reference.md` | All tracked events with properties               |

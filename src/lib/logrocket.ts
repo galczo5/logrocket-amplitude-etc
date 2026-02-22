@@ -25,7 +25,7 @@ export const captureMessage = (
 export const captureException = (error: Error, context?: Record<string, unknown>) => {
   if (KEYS.LOGROCKET_APP_ID) {
     LogRocket.captureException(error, {
-      contexts: context,
+      contexts: context
     });
   }
 };

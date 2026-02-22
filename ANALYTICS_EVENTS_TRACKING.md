@@ -9,6 +9,7 @@ Successfully implemented event tracking across all key user journeys and interac
 ### 1. **Product Discovery** ✓
 
 #### Track "Product Viewed" - ProductsPage.tsx
+
 - **Location:** `src/pages/ProductsPage.tsx`
 - **Triggered:** When user searches or filters products
 - **Event Data:**
@@ -24,11 +25,12 @@ trackSearch(search, {
   colors: filters.colors,
   minPrice: filters.minPrice,
   maxPrice: filters.maxPrice,
-  sort,
+  sort
 });
 ```
 
 #### Track "Product Selected" - ProductDetailPage.tsx
+
 - **Location:** `src/pages/ProductDetailPage.tsx`
 - **Triggered:** When user opens product detail page
 - **Event Data:**
@@ -44,6 +46,7 @@ trackProductSelected(p.id, p.name, p.category);
 ### 2. **Shopping Cart** ✓
 
 #### Track "Add to Cart" - ProductDetailPage.tsx
+
 - **Location:** `src/pages/ProductDetailPage.tsx`
 - **Triggered:** When user adds product to cart
 - **Event Data:**
@@ -57,12 +60,14 @@ trackAddToCart(product!.id, product!.name, product!.price / 100);
 ```
 
 #### Track "Remove from Cart" - NOT IMPLEMENTED YET
+
 - **Note:** Amplitude autocapture handles button clicks
 - **Future:** Can be implemented in CartContext removeItem() if detailed tracking needed
 
 ### 3. **Checkout Flow** ✓
 
 #### Track "Checkout Started" - CheckoutPage.tsx
+
 - **Location:** `src/pages/CheckoutPage.tsx`
 - **Triggered:** When user loads checkout page
 - **Event Data:**
@@ -81,6 +86,7 @@ useEffect(() => {
 ### 4. **Payment & Order Completion** ✓
 
 #### Track "Order Placed" - PaymentPage.tsx
+
 - **Location:** `src/pages/PaymentPage.tsx`
 - **Triggered:** When user successfully completes payment
 - **Event Data:**
@@ -96,6 +102,7 @@ trackOrderPlaced(result.orderId, total / 100, items.length);
 ### 5. **User Authentication** ✓
 
 #### Track "User Login" - AuthContext.tsx
+
 - **Location:** `src/context/AuthContext.tsx`
 - **Triggered:** When user successfully logs in
 - **Event Data:**
@@ -110,6 +117,7 @@ trackUserLogin(data.user.id, data.user.email);
 ## 📈 Event Funnels Created
 
 ### Primary Funnel: Purchase Conversion
+
 1. Product Viewed (Search/Filter)
 2. Product Selected (View Details)
 3. Add to Cart
@@ -121,6 +129,7 @@ trackUserLogin(data.user.id, data.user.email);
 ## 🔄 Automatic Tracking (Amplitude Autocapture)
 
 The following events are automatically tracked:
+
 - Page views
 - Button clicks (including "Add to Cart", "Proceed to Payment")
 - Form submissions (checkout & payment forms)
@@ -152,18 +161,21 @@ The following events are automatically tracked:
 ## 📊 Dashboard Metrics Now Available
 
 ### Amplitude
+
 - **Funnels:** View product → Add to cart → Checkout → Purchase
 - **Cohorts:** Users by purchase value, items purchased
 - **User segments:** High-value customers, cart abandoners
 - **Event properties:** Detailed product and order information
 
 ### LogRocket
+
 - **Session replays:** User journeys from search to purchase
 - **Network activity:** Payment processing, API calls
 - **Console logs:** All events captured in session context
 - **User identification:** All sessions linked to user ID
 
 ### Hotjar
+
 - **Heatmaps:** Product detail page interactions
 - **Recordings:** User behavior during checkout process
 - **Form analytics:** Checkout form field interactions
@@ -231,6 +243,7 @@ logRocket.captureException(error, { context: 'checkout' });
 ## 📚 Documentation
 
 For detailed information, see:
+
 - `docs/12-analytics-integration.md` - Full implementation plan
 - `src/lib/ANALYTICS.md` - API reference
 - `ENV_SETUP.md` - Environment setup guide
