@@ -2,11 +2,11 @@
 
 ## Checklist
 
-- [ ] Create `src/keys.ts` with centralized configuration
-- [ ] Create `.env.example` with placeholder values
-- [ ] Add `.env` to `.gitignore` (prevent accidental commits)
-- [ ] Install dependencies: `logrocket`, `logrocket-react`, `@amplitude/analytics-browser`, `react-hotjar`
-- [ ] Create `src/lib/analytics.ts` with helper functions
+- [x] Create `src/keys.ts` with centralized configuration
+- [x] Create `.env.example` with placeholder values
+- [x] Add `.env` to `.gitignore` (prevent accidental commits)
+- [x] Install dependencies: `logrocket`, `logrocket-react`, `@amplitude/analytics-browser`, `react-hotjar`
+- [x] Create `src/lib/analytics.ts` with helper functions
 - [ ] Initialize LogRocket in `src/main.tsx`
 - [ ] Initialize Amplitude in `src/main.tsx`
 - [ ] Initialize Hotjar in `src/main.tsx`

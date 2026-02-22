@@ -2,6 +2,75 @@
 # yarn lockfile v1
 
 
+"@amplitude/analytics-browser@^2.35.2":
+  version "2.35.2"
+  resolved "https://registry.yarnpkg.com/@amplitude/analytics-browser/-/analytics-browser-2.35.2.tgz#d1a20f90d112cf618415fe9d56a854c92d4b2ff0"
+  integrity sha512-eL7S6+SbP6Js8D93Dg2Kc49R6HR2yWY2uYLEo0AIjXbMnYRpctPht5ti4GYExL62I6qkmAZXAsYnVxXnlGHquw==
+  dependencies:
+    "@amplitude/analytics-core" "2.40.0"
+    "@amplitude/plugin-autocapture-browser" "1.22.1"
+    "@amplitude/plugin-network-capture-browser" "1.8.1"
+    "@amplitude/plugin-page-url-enrichment-browser" "0.6.1"
+    "@amplitude/plugin-page-view-tracking-browser" "2.7.1"
+    "@amplitude/plugin-web-vitals-browser" "1.1.12"
+    tslib "^2.4.1"
+
+"@amplitude/analytics-connector@^1.6.4":
+  version "1.6.4"
+  resolved "https://registry.yarnpkg.com/@amplitude/analytics-connector/-/analytics-connector-1.6.4.tgz#8a811ff5c8ee46bdfea0e8f61c7578769b5778ed"
+  integrity sha512-SpIv0IQMNIq6SH3UqFGiaZyGSc7PBZwRdq7lvP0pBxW8i4Ny+8zwI0pV+VMfMHQwWY3wdIbWw5WQphNjpdq1/Q==
+
+"@amplitude/analytics-core@2.40.0":
+  version "2.40.0"
+  resolved "https://registry.yarnpkg.com/@amplitude/analytics-core/-/analytics-core-2.40.0.tgz#26a3aab44a4043f59a8e5a2d9043b2c7a54cbba4"
+  integrity sha512-F6q2KDFDRG+nxzUHACorD4xABodmuQIv9NgGYbNBhGRCRNITXfkVAuJ3HMjlhwB5RBtiaRkQakOw1dJ8YF+X+Q==
+  dependencies:
+    "@amplitude/analytics-connector" "^1.6.4"
+    safe-json-stringify "1.2.0"
+    tslib "^2.4.1"
+    zen-observable-ts "^1.1.0"
+
+"@amplitude/plugin-autocapture-browser@1.22.1":
+  version "1.22.1"
+  resolved "https://registry.yarnpkg.com/@amplitude/plugin-autocapture-browser/-/plugin-autocapture-browser-1.22.1.tgz#374b4c78ea4d288e30a89f003b4e7507884842d9"
+  integrity sha512-PB38B0OjtV2KPt31ewTX39C6xY3M1+amlHN26eBXGgIIZxACHb++eOq6Y0Yyi8LTmtSg5Xt8d+TWlbCdDiO8wA==
+  dependencies:
+    "@amplitude/analytics-core" "2.40.0"
+    tslib "^2.4.1"
+
+"@amplitude/plugin-network-capture-browser@1.8.1":
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/@amplitude/plugin-network-capture-browser/-/plugin-network-capture-browser-1.8.1.tgz#49db1cf0cc0cee494c059b6aca1d857bfa1b1cc1"
+  integrity sha512-8CZF/0Bv5T8zInK7fBN99rmmUgtximyCB9cCOYLKFDopREQx8atLjbj8LFaTbgV5VSJpeh2f+gyUXW8siIrrhw==
+  dependencies:
+    "@amplitude/analytics-core" "2.40.0"
+    tslib "^2.4.1"
+
+"@amplitude/plugin-page-url-enrichment-browser@0.6.1":
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/@amplitude/plugin-page-url-enrichment-browser/-/plugin-page-url-enrichment-browser-0.6.1.tgz#dd3d3a2a295e0c4964e2af69c37a58a9dfaef5e9"
+  integrity sha512-5HtuPH53mBlXURtHyB7m/E4s4gc3fBujjCgvMBK+53oI9bKggc8yMMBqbxMgQdUwQ237A7GYGqHwG2e6ISIs1g==
+  dependencies:
+    "@amplitude/analytics-core" "2.40.0"
+    tslib "^2.4.1"
+
+"@amplitude/plugin-page-view-tracking-browser@2.7.1":
+  version "2.7.1"
+  resolved "https://registry.yarnpkg.com/@amplitude/plugin-page-view-tracking-browser/-/plugin-page-view-tracking-browser-2.7.1.tgz#886ce86781bd8cb0e5fc14cdbb881ac4a973e399"
+  integrity sha512-q8tBhV87iYrh4xZqqUlP8qH4t8C0c7rXBHF+p+MiNKTm5STZPs9+uYRy60y/JqQeCwpKE6xJWd3XAfYFPsuqUg==
+  dependencies:
+    "@amplitude/analytics-core" "2.40.0"
+    tslib "^2.4.1"
+
+"@amplitude/plugin-web-vitals-browser@1.1.12":
+  version "1.1.12"
+  resolved "https://registry.yarnpkg.com/@amplitude/plugin-web-vitals-browser/-/plugin-web-vitals-browser-1.1.12.tgz#4d00a9cbf887f100525368394d21731e869dfd86"
+  integrity sha512-USZjkc/Xf+pmMh74V6kWdJUWkPaYI38WmAOoakezXO2ius+Qr0gy8DN+9S6xRHbD0q8FCyNXwbQwhx1w403XYg==
+  dependencies:
+    "@amplitude/analytics-core" "2.40.0"
+    tslib "^2.4.1"
+    web-vitals "5.1.0"
+
 "@antfu/ni@^25.0.0":
   version "25.0.0"
   resolved "https://registry.yarnpkg.com/@antfu/ni/-/ni-25.0.0.tgz#2bf6834237e848a994b07fc311acad8d5da179a6"
@@ -1753,6 +1822,11 @@
   resolved "https://registry.yarnpkg.com/@types/validate-npm-package-name/-/validate-npm-package-name-4.0.2.tgz#df0f7dac25df7761f7476605ddac54cb1abda26e"
   integrity sha512-lrpDziQipxCEeK5kWxvljWYhUvOiB2A9izZd9B2AFarYAkqZshb4lPbRs7zKEic6eGtH8V/2qJW+dPp9OtF6bw==
 
+"@types/zen-observable@0.8.3":
+  version "0.8.3"
+  resolved "https://registry.yarnpkg.com/@types/zen-observable/-/zen-observable-0.8.3.tgz#781d360c282436494b32fe7d9f7f8e64b3118aa3"
+  integrity sha512-fbF6oTd4sGGy0xjHPKAt+eS2CrxJ3+6gQ3FGcBoIJR2TLAyCkCyI8JqZNy+FeON0AhVgNJoUumVoZQjBFUqHkw==
+
 "@typescript-eslint/eslint-plugin@8.56.0":
   version "8.56.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-8.56.0.tgz#5aec3db807a6b8437ea5d5ebf7bd16b4119aba8d"
@@ -3312,6 +3386,16 @@ log-symbols@^6.0.0:
     chalk "^5.3.0"
     is-unicode-supported "^1.3.0"
 
+logrocket-react@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/logrocket-react/-/logrocket-react-7.0.0.tgz#b05761ebf0cdccf40310669c049a58fde0d8b0e9"
+  integrity sha512-Z401yGYBeugdwl4mpM8ICz5HFNpTtG2eE0LX7q1FpCo1CxxO/GHM6B0/IyM9HzBBWzwnkyiMkcYKKXKV/7MLWw==
+
+logrocket@^12.0.0:
+  version "12.0.0"
+  resolved "https://registry.yarnpkg.com/logrocket/-/logrocket-12.0.0.tgz#f322dcfad520f6e59330c8e6d8f59a1fa0065aab"
+  integrity sha512-7VUI2gi3XxACLqJGZJ/8hRx3KT7z2joNXcBqbefkfWI6rLqMJOq0LUmfLbw3qRPPZTjOBiwpKKVecusL3V5K7Q==
+
 lru-cache@^5.1.1:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-5.1.1.tgz#1da27e6710271947695daf6848e847f01d84b920"
@@ -3833,6 +3917,11 @@ react-dom@^19.2.0:
   dependencies:
     scheduler "^0.27.0"
 
+react-hotjar@^6.3.1:
+  version "6.3.1"
+  resolved "https://registry.yarnpkg.com/react-hotjar/-/react-hotjar-6.3.1.tgz#cce120c0fc5160056937fd646fc11a8b925b7294"
+  integrity sha512-EwMqL+ROSlKzatMhT/aqRq7XWWfzlnHynSBSTJh5M2O78mBiPohiSl4Ysls3HOQkkD9y6L22BW0c9bxK2JguwQ==
+
 react-refresh@^0.18.0:
   version "0.18.0"
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.18.0.tgz#2dce97f4fe932a4d8142fa1630e475c1729c8062"
@@ -3971,6 +4060,11 @@ run-parallel@^1.1.9:
   integrity sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==
   dependencies:
     queue-microtask "^1.2.2"
+
+safe-json-stringify@1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/safe-json-stringify/-/safe-json-stringify-1.2.0.tgz#356e44bc98f1f93ce45df14bcd7c01cda86e0afd"
+  integrity sha512-gH8eh2nZudPQO6TytOvbxnuhYBOvDBBLW52tz5q6X58lJcd/tkmqFR+5Z9adS8aJtURSXWThWy/xJtJwixErvg==
 
 "safer-buffer@>= 2.1.2 < 3.0.0":
   version "2.1.2"
@@ -4321,7 +4415,7 @@ tsconfig-paths@^4.2.0:
     minimist "^1.2.6"
     strip-bom "^3.0.0"
 
-tslib@^2.0.0, tslib@^2.0.1, tslib@^2.1.0, tslib@^2.4.0, tslib@^2.8.1:
+tslib@^2.0.0, tslib@^2.0.1, tslib@^2.1.0, tslib@^2.4.0, tslib@^2.4.1, tslib@^2.8.1:
   version "2.8.1"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.8.1.tgz#612efe4ed235d567e8aba5f2a5fab70280ade83f"
   integrity sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==
@@ -4480,6 +4574,11 @@ web-streams-polyfill@^3.0.3:
   resolved "https://registry.yarnpkg.com/web-streams-polyfill/-/web-streams-polyfill-3.3.3.tgz#2073b91a2fdb1fbfbd401e7de0ac9f8214cecb4b"
   integrity sha512-d2JWLCivmZYTSIoge9MsgFCZrt571BikcWGYkjC1khllbTeDlGqZ2D8vD8E/lJa8WGWbb7Plm8/XJYV7IJHZZw==
 
+web-vitals@5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/web-vitals/-/web-vitals-5.1.0.tgz#2f117e92c8c4eeb107cb163cbb482ac20d685ebd"
+  integrity sha512-ArI3kx5jI0atlTtmV0fWU3fjpLmq/nD3Zr1iFFlJLaqa5wLBkUSzINwBPySCX/8jRyjlmy1Volw1kz1g9XE4Jg==
+
 which@^2.0.1:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/which/-/which-2.0.2.tgz#7c6a8dd0a636a0327e10b59c9286eee93f3f51b1"
@@ -4572,6 +4671,19 @@ yoctocolors@^2.1.1:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/yoctocolors/-/yoctocolors-2.1.2.tgz#d795f54d173494e7d8db93150cec0ed7f678c83a"
   integrity sha512-CzhO+pFNo8ajLM2d2IW/R93ipy99LWjtwblvC1RsoSUMZgyLbYFr221TnSNT7GjGdYui6P459mw9JH/g/zW2ug==
+
+zen-observable-ts@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/zen-observable-ts/-/zen-observable-ts-1.1.0.tgz#2d1aa9d79b87058e9b75698b92791c1838551f83"
+  integrity sha512-1h4zlLSqI2cRLPJUHJFL8bCWHhkpuXkF+dbGkRaWjgDIG26DmzyshUMrdV/rL3UnR+mhaX4fRq8LPouq0MYYIA==
+  dependencies:
+    "@types/zen-observable" "0.8.3"
+    zen-observable "0.8.15"
+
+zen-observable@0.8.15:
+  version "0.8.15"
+  resolved "https://registry.yarnpkg.com/zen-observable/-/zen-observable-0.8.15.tgz#96415c512d8e3ffd920afd3889604e30b9eaac15"
+  integrity sha512-PQ2PC7R9rslx84ndNBZB/Dkv8V8fZEpk83RLgXtYd0fwUgEjseMn1Dgajh2x6S8QbZAFa9p2qVCEuYZNgve0dQ==
 
 zod-to-json-schema@^3.24.6, zod-to-json-schema@^3.25.1:
   version "3.25.1"
