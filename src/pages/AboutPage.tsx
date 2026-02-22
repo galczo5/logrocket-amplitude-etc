@@ -1,5 +1,7 @@
+import { useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
+import { trackPageView } from '@/lib/analytics';
 
 const TECH_STACK = [
   { layer: 'Frontend', tech: 'React 19 + TypeScript + Vite' },
@@ -35,6 +37,10 @@ const NOTES = [
 ];
 
 export default function AboutPage() {
+  useEffect(() => {
+    trackPageView('About');
+  }, []);
+
   return (
     <div className="max-w-3xl mx-auto px-8 py-12 flex flex-col gap-6">
       <div>

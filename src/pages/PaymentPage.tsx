@@ -8,6 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Spinner } from '@/components/ui/spinner';
+import { trackOrderPlaced } from '@/lib/analytics';
 import { useCart } from '@/context/CartContext';
 import { api } from '@/lib/api';
 import { CheckoutProgress } from './CheckoutPage';
@@ -120,6 +121,8 @@ export default function PaymentPage() {
         }
       });
       const snapshot = { items: [...items], totalPrice, shipping, total };
+      // Track order placed
+      trackOrderPlaced(result.orderId, total / 100, items.length);
       clearCart();
       setConfirmation({ orderId: result.orderId, snapshot });
     } catch (err) {

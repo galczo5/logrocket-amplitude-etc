@@ -16,6 +16,7 @@ import { Spinner } from '@/components/ui/spinner';
 import { Toggle } from '@/components/ui/toggle';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { api } from '@/lib/api';
+import { trackProductSelected, trackAddToCart } from '@/lib/analytics';
 import { useCart } from '@/context/CartContext';
 import ProductCard from '@/components/ProductCard';
 import type { Product, Color } from '@/types/product';
@@ -49,6 +50,8 @@ export default function ProductDetailPage() {
       .get<Product>(`/products/${id}`)
       .then((p) => {
         setProduct(p);
+        // Track product view
+        trackProductSelected(p.id, p.name, p.category);
         return Promise.all([Promise.resolve(p), api.get<{ products: Product[]; total: number }>('/products')]);
       })
       .then(([currentProduct, { products }]) => {
@@ -81,6 +84,8 @@ export default function ProductDetailPage() {
       color: selectedColor.name,
       image: product!.image
     });
+    // Track add to cart
+    trackAddToCart(product!.id, product!.name, product!.price / 100);
     setAddedMsg(true);
     setTimeout(() => setAddedMsg(false), 3000);
   }

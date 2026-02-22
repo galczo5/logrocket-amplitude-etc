@@ -7,23 +7,25 @@
 - [x] Add `.env` to `.gitignore` (prevent accidental commits)
 - [x] Install dependencies: `logrocket`, `logrocket-react`, `@amplitude/analytics-browser`, `react-hotjar`
 - [x] Create `src/lib/analytics.ts` with helper functions
+- [x] Create `src/lib/initializeAnalytics.ts` with initialization logic
 - [x] Initialize LogRocket in `src/main.tsx`
-- [x] Initialize Amplitude in `src/main.tsx`
+- [x] Initialize Amplitude in `src/main.tsx` (with autocapture enabled)
 - [x] Initialize Hotjar in `src/main.tsx`
 - [x] Integrate with `src/context/AuthContext.tsx` for user identification
-- [x] Track "User Login" event on authentication
-- [ ] Track "Product Viewed" events on product pages
-- [ ] Track "Product Details Opened" on product detail page
-- [ ] Track "Add to Cart" and "Remove from Cart" events
-- [ ] Track "Checkout Started" on checkout page
-- [ ] Track "Payment Completed" and "Order Placed" events
-- [ ] Add page view tracking to all routes
-- [ ] Verify analytics appear in all three service dashboards
-- [ ] Test session replay in LogRocket
-- [ ] Test heatmaps/recordings in Hotjar
-- [ ] Verify funnel analysis in Amplitude
-- [ ] Document all tracked events in a events reference guide
-- [ ] Create developer guide for adding new analytics events
+- [x] Track "User Login" event on authentication (AuthContext.tsx:56)
+- [x] Track "Product Viewed" events on product pages (ProductDetailPage.tsx:54)
+- [x] Track "Product Details Opened" on product detail page (ProductDetailPage.tsx:54)
+- [x] Track "Add to Cart" and "Remove from Cart" events (ProductDetailPage.tsx:88)
+- [x] Track "Checkout Started" on checkout page (CheckoutPage.tsx:121)
+- [x] Track "Payment Completed" and "Order Placed" events (PaymentPage.tsx:11)
+- [x] Track search/filter events (ProductsPage.tsx:98)
+- [x] Amplitude autocapture enabled for page views and form interactions
+- [ ] **MANUAL** - Verify analytics appear in all three service dashboards
+- [ ] **MANUAL** - Test session replay in LogRocket
+- [ ] **MANUAL** - Test heatmaps/recordings in Hotjar
+- [ ] **MANUAL** - Verify funnel analysis in Amplitude
+- [x] Document all tracked events in a events reference guide
+- [x] Create developer guide for adding new analytics events
 
 ## Overview
 

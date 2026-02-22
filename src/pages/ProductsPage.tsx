@@ -9,6 +9,7 @@ import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select'
 import ProductCard from '@/components/ProductCard';
 import FilterSidebar, { type FilterValues } from '@/components/FilterSidebar';
 import { api } from '@/lib/api';
+import { trackSearch } from '@/lib/analytics';
 import type { Product } from '@/types/product';
 
 const EMPTY_FILTERS: FilterValues = {
@@ -90,7 +91,20 @@ export default function ProductsPage() {
   useEffect(() => {
     setSearchParams(filtersToParams(filters, sort, search), { replace: true });
     if (debounceRef.current) clearTimeout(debounceRef.current);
-    debounceRef.current = setTimeout(() => fetchProducts(filters, sort, search), 300);
+    debounceRef.current = setTimeout(() => {
+      fetchProducts(filters, sort, search);
+      // Track search/filter event
+      if (search || Object.values(filters).some((v) => (Array.isArray(v) ? v.length > 0 : v))) {
+        trackSearch(search, {
+          categories: filters.categories,
+          sizes: filters.sizes,
+          colors: filters.colors,
+          minPrice: filters.minPrice,
+          maxPrice: filters.maxPrice,
+          sort,
+        });
+      }
+    }, 300);
     return () => {
       if (debounceRef.current) clearTimeout(debounceRef.current);
     };

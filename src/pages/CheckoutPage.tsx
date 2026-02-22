@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { MinusIcon, PlusIcon, TrashIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -7,6 +7,7 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
+import { trackCheckoutStarted } from '@/lib/analytics';
 import { useCart } from '@/context/CartContext';
 
 const US_STATES = [
@@ -113,6 +114,13 @@ export default function CheckoutPage() {
     zip: '10001'
   });
   const [errors, setErrors] = useState<FormErrors>({});
+
+  // Track checkout started
+  useEffect(() => {
+    if (items.length > 0) {
+      trackCheckoutStarted(totalPrice / 100, items.length);
+    }
+  }, []);
 
   const shipping = totalPrice >= FREE_SHIPPING_THRESHOLD ? 0 : SHIPPING_FLAT;
   const total = totalPrice + shipping;

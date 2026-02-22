@@ -14,6 +14,7 @@ import {
 import ProductCard from '@/components/ProductCard';
 import { api } from '@/lib/api';
 import type { Product } from '@/types/product';
+import { trackPageView } from '@/lib/analytics';
 
 const HERO_SLIDES = [
   {
@@ -57,6 +58,10 @@ const CATEGORIES = [
 export default function HomePage() {
   const [featured, setFeatured] = useState<Product[]>([]);
   const [carouselApi, setCarouselApi] = useState<CarouselApi>();
+
+  useEffect(() => {
+    trackPageView('Home');
+  }, []);
 
   useEffect(() => {
     api

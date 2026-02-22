@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router';
 import { useAuth } from '@/context/AuthContext';
 import { api } from '@/lib/api';
+import { trackPageView } from '@/lib/analytics';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -53,6 +54,7 @@ export default function ProfilePage() {
       navigate('/login', { state: { from: '/profile' }, replace: true });
       return;
     }
+    trackPageView('Profile');
     api
       .get<{ orders: Order[] }>('/orders')
       .then(({ orders }) => setOrders(orders))
