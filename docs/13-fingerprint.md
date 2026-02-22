@@ -2,9 +2,9 @@
 
 ## Checklist
 
-- [ ] Install dependency: `@fingerprintjs/fingerprintjs`
-- [ ] Add `setFingerprintId()` to `src/lib/analytics.ts`
-- [ ] Update `src/lib/initializeAnalytics.ts` with async FingerprintJS init
+- [x] Install dependency: `@fingerprintjs/fingerprintjs`
+- [x] Add `setFingerprintId()` to `src/lib/analytics.ts`
+- [x] Update `src/lib/initializeAnalytics.ts` with async FingerprintJS init
 - [ ] **MANUAL** - Verify `[Analytics] Fingerprint initialized` log in browser console
 - [ ] **MANUAL** - Verify `fingerprintVisitorId` appears in Amplitude user properties
 - [ ] **MANUAL** - Verify `fingerprintVisitorId` appears in LogRocket session user context

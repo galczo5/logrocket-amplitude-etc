@@ -575,6 +575,11 @@
     "@eslint/core" "^0.17.0"
     levn "^0.4.1"
 
+"@fingerprintjs/fingerprintjs@^5.0.1":
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/@fingerprintjs/fingerprintjs/-/fingerprintjs-5.0.1.tgz#e6ca2f88719b90e54a0fa8ab2896eee970948bb7"
+  integrity sha512-KbaeE/rk2WL8MfpRP6jTI4lSr42SJPjvkyrjP3QU6uUDkOMWWYC2Ts1sNSYcegHC8avzOoYTHBj+2fTqvZWQBA==
+
 "@floating-ui/core@^1.7.4":
   version "1.7.4"
   resolved "https://registry.yarnpkg.com/@floating-ui/core/-/core-1.7.4.tgz#4a006a6e01565c0f87ba222c317b056a2cffd2f4"

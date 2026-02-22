@@ -7,7 +7,9 @@ import LogRocket from 'logrocket';
 import setupLogRocketReact from 'logrocket-react';
 import * as amplitude from '@amplitude/analytics-browser';
 import { initialize as initializeHotjar } from 'react-hotjar';
+import FingerprintJS from '@fingerprintjs/fingerprintjs';
 import { KEYS } from '../keys';
+import { setFingerprintId } from './analytics';
 
 export function initializeAnalytics() {
   // Initialize LogRocket first (before Amplitude for better error tracking)
@@ -55,4 +57,15 @@ export function initializeAnalytics() {
   if (!KEYS.LOGROCKET_APP_ID && !KEYS.AMPLITUDE_API_KEY && !KEYS.HOTJAR_SITE_ID) {
     console.info('[Analytics] No analytics services configured. Set environment variables to enable.');
   }
+
+  // Initialize Fingerprint for anonymous visitor tracking (free, client-side)
+  FingerprintJS.load()
+    .then(fp => fp.get())
+    .then(result => {
+      setFingerprintId(result.visitorId, result.confidence.score);
+      console.log('[Analytics] Fingerprint initialized:', result.visitorId);
+    })
+    .catch(error => {
+      console.error('[Analytics] Failed to initialize Fingerprint:', error);
+    });
 }

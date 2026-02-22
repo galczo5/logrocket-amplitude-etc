@@ -33,6 +33,28 @@ export const setUserProperties = (properties: Record<string, unknown>) => {
 };
 
 /**
+ * Set fingerprint visitor ID as anonymous identifier across all analytics services.
+ * Called once at app startup for anonymous tracking before user login.
+ */
+export const setFingerprintId = (visitorId: string, confidence: number) => {
+  amplitudeLib.setUserProperties({
+    fingerprintVisitorId: visitorId,
+    fingerprintConfidence: confidence,
+  });
+  logRocketLib.setUserContext({
+    fingerprintVisitorId: visitorId,
+    fingerprintConfidence: confidence,
+  });
+  // Hotjar identify API for visitor tagging
+  if (typeof window !== 'undefined' && (window as { hj?: Function }).hj) {
+    (window as { hj?: Function }).hj!('identify', null, {
+      fingerprint_visitor_id: visitorId,
+      fingerprint_confidence: confidence,
+    });
+  }
+};
+
+/**
  * Capture an error across all analytics services
  */
 export const captureError = (error: Error, context?: Record<string, unknown>) => {
