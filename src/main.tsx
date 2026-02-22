@@ -6,6 +6,10 @@ import router from './router';
 import { AuthProvider } from './context/AuthContext';
 import { CartProvider } from './context/CartContext';
 import { ThemeProvider } from './context/ThemeContext';
+import { initializeAnalytics } from './lib/initializeAnalytics';
+
+// Initialize analytics services (Amplitude, LogRocket, Hotjar)
+initializeAnalytics();
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

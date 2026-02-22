@@ -7,11 +7,11 @@
 - [x] Add `.env` to `.gitignore` (prevent accidental commits)
 - [x] Install dependencies: `logrocket`, `logrocket-react`, `@amplitude/analytics-browser`, `react-hotjar`
 - [x] Create `src/lib/analytics.ts` with helper functions
-- [ ] Initialize LogRocket in `src/main.tsx`
-- [ ] Initialize Amplitude in `src/main.tsx`
-- [ ] Initialize Hotjar in `src/main.tsx`
-- [ ] Integrate with `src/context/AuthContext.tsx` for user identification
-- [ ] Track "User Login" event on authentication
+- [x] Initialize LogRocket in `src/main.tsx`
+- [x] Initialize Amplitude in `src/main.tsx`
+- [x] Initialize Hotjar in `src/main.tsx`
+- [x] Integrate with `src/context/AuthContext.tsx` for user identification
+- [x] Track "User Login" event on authentication
 - [ ] Track "Product Viewed" events on product pages
 - [ ] Track "Product Details Opened" on product detail page
 - [ ] Track "Add to Cart" and "Remove from Cart" events
