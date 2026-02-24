@@ -19,10 +19,10 @@ Add a "Developer Mode" section to the login page with two quick-login buttons â€
 
 **Users:**
 
-| ID       | Name         | Email                    |
-| -------- | ------------ | ------------------------ |
-| `user-1` | John Doe     | `john@example.com`       |
-| `user-2` | Not John Doe | `notjohn@example.com`    |
+| ID       | Name         | Email                 |
+| -------- | ------------ | --------------------- |
+| `user-1` | John Doe     | `john@example.com`    |
+| `user-2` | Not John Doe | `notjohn@example.com` |
 
 ## Implementation Plan
 
@@ -38,14 +38,14 @@ export const users = [
     id: 'user-1',
     email: 'john@example.com',
     name: 'John Doe',
-    avatar: null,
+    avatar: null
   },
   {
     id: 'user-2',
     email: 'notjohn@example.com',
     name: 'Not John Doe',
-    avatar: null,
-  },
+    avatar: null
+  }
 ];
 ```
 
@@ -143,14 +143,14 @@ Alternatively, extend the existing `login()` to accept an optional `userId` para
 
 ## Files Changed
 
-| File                              | Change                                                  |
-| --------------------------------- | ------------------------------------------------------- |
-| `server/data/users.ts`           | Add second mock user ("Not John Doe")                   |
-| `server/routes/auth.ts`          | Support `userId` field in login request body             |
-| `src/lib/amplitude.ts`           | Add `reset()` function to clear Amplitude identity      |
-| `src/lib/analytics.ts`           | Add `resetUser()` that resets identity across all services |
-| `src/context/AuthContext.tsx`     | Add `devLogin(userId)` method; call `resetUser()` on logout |
-| `src/pages/LoginPage.tsx`        | Add "Developer Mode" section with two quick-login buttons |
+| File                          | Change                                                      |
+| ----------------------------- | ----------------------------------------------------------- |
+| `server/data/users.ts`        | Add second mock user ("Not John Doe")                       |
+| `server/routes/auth.ts`       | Support `userId` field in login request body                |
+| `src/lib/amplitude.ts`        | Add `reset()` function to clear Amplitude identity          |
+| `src/lib/analytics.ts`        | Add `resetUser()` that resets identity across all services  |
+| `src/context/AuthContext.tsx` | Add `devLogin(userId)` method; call `resetUser()` on logout |
+| `src/pages/LoginPage.tsx`     | Add "Developer Mode" section with two quick-login buttons   |
 
 ## Key Considerations
 

@@ -94,9 +94,7 @@ export default function LoginPage() {
           </form>
 
           <div className="mt-6 border-t pt-4">
-            <p className="mb-3 text-xs font-medium uppercase tracking-wide text-muted-foreground">
-              Developer Mode
-            </p>
+            <p className="mb-3 text-xs font-medium uppercase tracking-wide text-muted-foreground">Developer Mode</p>
             <div className="flex gap-2">
               {devUsers.map(({ id, label }) => (
                 <Button
