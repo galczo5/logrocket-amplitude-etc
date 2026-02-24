@@ -2,14 +2,14 @@
 
 ## Checklist
 
-- [ ] Add a second mock user ("Not John Doe") to `server/data/users.ts`
-- [ ] Update `POST /api/auth/login` to accept an optional `userId` field for dev login
-- [ ] Add "Developer Mode" button group to `LoginPage.tsx` (below the sign-in form)
-- [ ] Wire dev login buttons to call login with the correct user
+- [x] Add a second mock user ("Not John Doe") to `server/data/users.ts`
+- [x] Update `POST /api/auth/login` to accept an optional `userId` field for dev login
+- [x] Add "Developer Mode" button group to `LoginPage.tsx` (below the sign-in form)
+- [x] Wire dev login buttons to call login with the correct user
 - [ ] **MANUAL** — Verify clicking "John Doe" logs in as John Doe
 - [ ] **MANUAL** — Verify clicking "Not John Doe" logs in as Not John Doe
-- [ ] Add `resetUser()` to `src/lib/analytics.ts` (resets Amplitude, LogRocket, Hotjar identity)
-- [ ] Call `resetUser()` in `logout()` so analytics services clear stale user data
+- [x] Add `resetUser()` to `src/lib/analytics.ts` (resets Amplitude, LogRocket, Hotjar identity)
+- [x] Call `resetUser()` in `logout()` so analytics services clear stale user data
 - [ ] **MANUAL** — Verify analytics identification works correctly for both users
 - [ ] **MANUAL** — Verify logging out then in as a different user shows correct identity in analytics
 

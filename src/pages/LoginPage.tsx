@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Spinner } from '@/components/ui/spinner';
 
 export default function LoginPage() {
-  const { login } = useAuth();
+  const { login, devLogin } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const from = (location.state as { from?: string } | null)?.from ?? '/';
@@ -16,6 +16,7 @@ export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
+  const [devLoadingId, setDevLoadingId] = useState<string | null>(null);
   const [error, setError] = useState('');
 
   async function handleSubmit(e: React.FormEvent) {
@@ -35,6 +36,24 @@ export default function LoginPage() {
       setLoading(false);
     }
   }
+
+  async function handleDevLogin(userId: string) {
+    setError('');
+    setDevLoadingId(userId);
+    try {
+      await devLogin(userId);
+      navigate(from, { replace: true });
+    } catch {
+      setError('Login failed. Please try again.');
+    } finally {
+      setDevLoadingId(null);
+    }
+  }
+
+  const devUsers = [
+    { id: 'user-1', label: 'John Doe' },
+    { id: 'user-2', label: 'Not John Doe' }
+  ];
 
   return (
     <div className="flex items-center justify-center py-16">
@@ -73,6 +92,26 @@ export default function LoginPage() {
               Sign In
             </Button>
           </form>
+
+          <div className="mt-6 border-t pt-4">
+            <p className="mb-3 text-xs font-medium uppercase tracking-wide text-muted-foreground">
+              Developer Mode
+            </p>
+            <div className="flex gap-2">
+              {devUsers.map(({ id, label }) => (
+                <Button
+                  key={id}
+                  variant="outline"
+                  className="flex-1"
+                  disabled={devLoadingId !== null || loading}
+                  onClick={() => handleDevLogin(id)}
+                >
+                  {devLoadingId === id && <Spinner className="mr-2" />}
+                  {label}
+                </Button>
+              ))}
+            </div>
+          </div>
         </CardContent>
       </Card>
     </div>

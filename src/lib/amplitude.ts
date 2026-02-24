@@ -123,3 +123,13 @@ export const trackSearch = (query: string, filters?: Record<string, unknown>) =>
     timestamp: new Date().toISOString()
   });
 };
+
+/**
+ * Reset Amplitude user identity — clears userId and generates a new anonymous device ID.
+ * Call on logout so the next login starts with a clean identity.
+ */
+export const reset = () => {
+  if (KEYS.AMPLITUDE_API_KEY) {
+    amplitude.reset();
+  }
+};

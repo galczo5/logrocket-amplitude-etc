@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import { api } from '@/lib/api';
-import { setUserId, setUserProperties, trackUserLogin } from '@/lib/analytics';
+import { setUserId, setUserProperties, trackUserLogin, resetUser } from '@/lib/analytics';
 import type { User } from '@/types/user';
 
 interface AuthState {
@@ -11,6 +11,7 @@ interface AuthState {
 
 interface AuthContextValue extends AuthState {
   login: (email: string, password: string) => Promise<void>;
+  devLogin: (userId: string) => Promise<void>;
   logout: () => void;
 }
 
@@ -52,17 +53,24 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const data = await api.post<{ user: User; token: string }>('/auth/login', { email, password });
     setUser(data.user);
     setToken(data.token);
-    // Track login event
+    trackUserLogin(data.user.id, data.user.email);
+  }
+
+  async function devLogin(userId: string) {
+    const data = await api.post<{ user: User; token: string }>('/auth/login', { userId });
+    setUser(data.user);
+    setToken(data.token);
     trackUserLogin(data.user.id, data.user.email);
   }
 
   function logout() {
+    resetUser();
     setUser(null);
     setToken(null);
   }
 
   return (
-    <AuthContext.Provider value={{ user, token, isAuthenticated: !!token, login, logout }}>
+    <AuthContext.Provider value={{ user, token, isAuthenticated: !!token, login, devLogin, logout }}>
       {children}
     </AuthContext.Provider>
   );

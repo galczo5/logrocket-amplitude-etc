@@ -55,6 +55,20 @@ export const setFingerprintId = (visitorId: string, confidence: number) => {
 };
 
 /**
+ * Reset user identity across all analytics services.
+ * Call on logout to ensure the next login gets a clean identity.
+ */
+export const resetUser = () => {
+  amplitudeLib.reset();
+  // LogRocket doesn't support un-identifying mid-session; flag the transition.
+  logRocketLib.setUserContext({ loggedIn: false });
+  // Clear Hotjar identity
+  if (typeof window !== 'undefined' && (window as { hj?: Function }).hj) {
+    (window as { hj?: Function }).hj!('identify', null, {});
+  }
+};
+
+/**
  * Capture an error across all analytics services
  */
 export const captureError = (error: Error, context?: Record<string, unknown>) => {
