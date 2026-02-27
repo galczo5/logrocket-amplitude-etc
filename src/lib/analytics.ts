@@ -13,7 +13,11 @@ import * as logRocketLib from './logrocket';
 export const trackEvent = (name: string, properties?: Record<string, unknown>) => {
   amplitudeLib.trackEvent(name, properties);
   logRocketLib.trackEvent(name, properties);
-  // Hotjar is auto-tracking, no manual tracking needed for standard events
+  // Hotjar/Contentsquare event tracking
+  if (typeof window !== 'undefined') {
+    (window as { _uxa?: unknown[][] })._uxa ??= [];
+    (window as { _uxa?: unknown[][] })._uxa!.push(['trackEvent', { name, properties }]);
+  }
 };
 
 /**
@@ -45,12 +49,16 @@ export const setFingerprintId = (visitorId: string, confidence: number) => {
     fingerprintVisitorId: visitorId,
     fingerprintConfidence: confidence
   });
-  // Hotjar identify API for visitor tagging
-  if (typeof window !== 'undefined' && (window as { hj?: Function }).hj) {
-    (window as { hj?: Function }).hj!('identify', null, {
-      fingerprint_visitor_id: visitorId,
-      fingerprint_confidence: confidence
-    });
+  // Hotjar/Contentsquare identify for visitor tagging
+  if (typeof window !== 'undefined') {
+    (window as { _uxa?: unknown[][] })._uxa ??= [];
+    (window as { _uxa?: unknown[][] })._uxa!.push([
+      'trackEvent',
+      {
+        name: 'fingerprint_identified',
+        properties: { fingerprint_visitor_id: visitorId, fingerprint_confidence: confidence }
+      }
+    ]);
   }
 };
 
@@ -62,9 +70,10 @@ export const resetUser = () => {
   amplitudeLib.reset();
   // LogRocket doesn't support un-identifying mid-session; flag the transition.
   logRocketLib.setUserContext({ loggedIn: false });
-  // Clear Hotjar identity
-  if (typeof window !== 'undefined' && (window as { hj?: Function }).hj) {
-    (window as { hj?: Function }).hj!('identify', null, {});
+  // Track logout in Hotjar/Contentsquare
+  if (typeof window !== 'undefined') {
+    (window as { _uxa?: unknown[][] })._uxa ??= [];
+    (window as { _uxa?: unknown[][] })._uxa!.push(['trackPageEvent', 'user_logged_out']);
   }
 };
 
@@ -78,10 +87,11 @@ export const captureError = (error: Error, context?: Record<string, unknown>) =>
 /**
  * Track page view (supplements Amplitude's autocapture)
  */
-export const trackPageView = (pageName: string) => {
-  amplitudeLib.trackPageView(pageName);
+export const trackPageView = (pageName: string, route: string) => {
+  amplitudeLib.trackPageView(pageName, route);
   logRocketLib.trackEvent('Page Viewed', {
     page: pageName,
+    route,
     timestamp: new Date().toISOString()
   });
 };

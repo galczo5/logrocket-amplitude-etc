@@ -44,7 +44,7 @@ export const identify = (userId: string, traits?: Record<string, unknown>) => {
  */
 export const setUserContext = (properties: Record<string, unknown>) => {
   if (KEYS.LOGROCKET_APP_ID) {
-    LogRocket.setUserContext(properties);
+    LogRocket.identify(properties as Record<string, string | number | boolean>);
   }
 };
 

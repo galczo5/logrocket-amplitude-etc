@@ -60,7 +60,7 @@ export default function HomePage() {
   const [carouselApi, setCarouselApi] = useState<CarouselApi>();
 
   useEffect(() => {
-    trackPageView('Home');
+    trackPageView('Home', '/');
   }, []);
 
   useEffect(() => {

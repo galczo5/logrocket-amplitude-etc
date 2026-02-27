@@ -38,7 +38,7 @@ const NOTES = [
 
 export default function AboutPage() {
   useEffect(() => {
-    trackPageView('About');
+    trackPageView('About', '/about');
   }, []);
 
   return (

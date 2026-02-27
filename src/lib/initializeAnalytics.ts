@@ -4,9 +4,7 @@
  */
 
 import LogRocket from 'logrocket';
-import setupLogRocketReact from 'logrocket-react';
 import * as amplitude from '@amplitude/analytics-browser';
-import { initialize as initializeHotjar } from 'react-hotjar';
 import FingerprintJS from '@fingerprintjs/fingerprintjs';
 import { KEYS } from '../keys';
 import { setFingerprintId } from './analytics';
@@ -16,11 +14,12 @@ export function initializeAnalytics() {
   if (KEYS.LOGROCKET_APP_ID) {
     try {
       LogRocket.init(KEYS.LOGROCKET_APP_ID);
-      setupLogRocketReact(LogRocket);
       console.log('[Analytics] LogRocket initialized');
     } catch (error) {
       console.error('[Analytics] Failed to initialize LogRocket:', error);
     }
+  } else {
+    console.warn('[Analytics] LogRocket not initialized: VITE_LOGROCKET_APP_ID is not set');
   }
 
   // Initialize Amplitude with autocapture enabled
@@ -38,24 +37,23 @@ export function initializeAnalytics() {
     } catch (error) {
       console.error('[Analytics] Failed to initialize Amplitude:', error);
     }
+  } else {
+    console.warn('[Analytics] Amplitude not initialized: VITE_AMPLITUDE_API_KEY is not set');
   }
 
-  // Initialize Hotjar for heatmaps and recordings
+  // Initialize Hotjar/Contentsquare via script tag
   if (KEYS.HOTJAR_SITE_ID) {
     try {
-      initializeHotjar({
-        id: parseInt(KEYS.HOTJAR_SITE_ID),
-        sv: 6,
-        debug: import.meta.env.DEV
-      });
+      const script = document.createElement('script');
+      script.src = `https://t.contentsquare.net/uxa/${KEYS.HOTJAR_SITE_ID}.js`;
+      script.async = true;
+      document.head.appendChild(script);
       console.log('[Analytics] Hotjar initialized');
     } catch (error) {
       console.error('[Analytics] Failed to initialize Hotjar:', error);
     }
-  }
-
-  if (!KEYS.LOGROCKET_APP_ID && !KEYS.AMPLITUDE_API_KEY && !KEYS.HOTJAR_SITE_ID) {
-    console.info('[Analytics] No analytics services configured. Set environment variables to enable.');
+  } else {
+    console.warn('[Analytics] Hotjar not initialized: VITE_HOTJAR_SITE_ID is not set');
   }
 
   // Initialize Fingerprint for anonymous visitor tracking (free, client-side)

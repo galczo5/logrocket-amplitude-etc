@@ -54,7 +54,7 @@ export default function ProfilePage() {
       navigate('/login', { state: { from: '/profile' }, replace: true });
       return;
     }
-    trackPageView('Profile');
+    trackPageView('Profile', '/profile');
     api
       .get<{ orders: Order[] }>('/orders')
       .then(({ orders }) => setOrders(orders))
