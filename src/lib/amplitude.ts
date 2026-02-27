@@ -29,16 +29,21 @@ export const setUserId = (userId: string) => {
  */
 export const setUserProperties = (properties: Record<string, unknown>) => {
   if (KEYS.AMPLITUDE_API_KEY) {
-    amplitude.setUserProperties(properties);
+    const identify = new amplitude.Identify();
+    for (const [key, value] of Object.entries(properties)) {
+      identify.set(key, value as string | number | boolean);
+    }
+    amplitude.identify(identify);
   }
 };
 
 /**
  * Track page view in Amplitude (supplements autocapture)
  */
-export const trackPageView = (pageName: string) => {
+export const trackPageView = (pageName: string, route: string) => {
   trackEvent('Page Viewed', {
     page: pageName,
+    route,
     timestamp: new Date().toISOString()
   });
 };

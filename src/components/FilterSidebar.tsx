@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { Label } from '@/components/ui/label';
+import { trackEvent } from '@/lib/analytics';
 
 const CATEGORIES = ['men', 'women', 'unisex'];
 const SIZES = ['XS', 'S', 'M', 'L', 'XL'];
@@ -76,12 +77,15 @@ export default function FilterSidebar({ filters, onChange, onClear }: Props) {
             <Checkbox
               id={`cat-${cat}`}
               checked={filters.categories.includes(cat)}
-              onCheckedChange={() =>
-                onChange({
-                  ...filters,
-                  categories: toggleItem(filters.categories, cat)
-                })
-              }
+              onCheckedChange={() => {
+                const adding = !filters.categories.includes(cat);
+                trackEvent('Filter Toggled', {
+                  filterType: 'category',
+                  value: cat,
+                  action: adding ? 'added' : 'removed'
+                });
+                onChange({ ...filters, categories: toggleItem(filters.categories, cat) });
+              }}
             />
             <Label htmlFor={`cat-${cat}`} className="capitalize font-normal cursor-pointer">
               {cat}
@@ -98,7 +102,11 @@ export default function FilterSidebar({ filters, onChange, onClear }: Props) {
             <Checkbox
               id={`size-${size}`}
               checked={filters.sizes.includes(size)}
-              onCheckedChange={() => onChange({ ...filters, sizes: toggleItem(filters.sizes, size) })}
+              onCheckedChange={() => {
+                const adding = !filters.sizes.includes(size);
+                trackEvent('Filter Toggled', { filterType: 'size', value: size, action: adding ? 'added' : 'removed' });
+                onChange({ ...filters, sizes: toggleItem(filters.sizes, size) });
+              }}
             />
             <Label htmlFor={`size-${size}`} className="font-normal cursor-pointer">
               {size}
@@ -115,12 +123,15 @@ export default function FilterSidebar({ filters, onChange, onClear }: Props) {
             <Checkbox
               id={`color-${color.name}`}
               checked={filters.colors.includes(color.name)}
-              onCheckedChange={() =>
-                onChange({
-                  ...filters,
-                  colors: toggleItem(filters.colors, color.name)
-                })
-              }
+              onCheckedChange={() => {
+                const adding = !filters.colors.includes(color.name);
+                trackEvent('Filter Toggled', {
+                  filterType: 'color',
+                  value: color.name,
+                  action: adding ? 'added' : 'removed'
+                });
+                onChange({ ...filters, colors: toggleItem(filters.colors, color.name) });
+              }}
             />
             <span
               className="size-4 rounded-full border border-border shrink-0"

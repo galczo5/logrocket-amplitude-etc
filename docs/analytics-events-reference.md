@@ -1,177 +1,55 @@
 # Analytics Events Reference
 
-Complete reference for all tracked events in the T-Shirt Shop application.
-
-## Services
-
-| Service       | Purpose                             | Tracking type                       |
-| ------------- | ----------------------------------- | ----------------------------------- |
-| **Amplitude** | Product analytics, funnels, cohorts | Custom events + autocapture         |
-| **LogRocket** | Session replay, error tracking      | Custom events + automatic recording |
-| **Hotjar**    | Heatmaps, session recordings        | Automatic (no custom events)        |
-
----
-
 ## Custom Events
 
-### `User Login`
+Events routed through the generic `trackEvent()` are sent to **Amplitude, LogRocket, and Hotjar/Contentsquare**. Events routed through dedicated helper functions (`trackUserLogin`, `trackAddToCart`, etc.) are sent to **Amplitude and LogRocket only**.
 
-Fired when a user successfully authenticates.
-
-**Source:** `src/context/AuthContext.tsx`
-**Trigger:** Successful login API response
-**Services:** Amplitude, LogRocket
-
-| Property    | Type              | Example                      |
-| ----------- | ----------------- | ---------------------------- |
-| `userId`    | string            | `"user-abc123"`              |
-| `email`     | string            | `"user@example.com"`         |
-| `timestamp` | string (ISO 8601) | `"2026-02-22T10:00:00.000Z"` |
-
----
-
-### `Product Selected`
-
-Fired when a user opens a product detail page.
-
-**Source:** `src/pages/ProductDetailPage.tsx`
-**Trigger:** Product data loads on detail page
-**Services:** Amplitude, LogRocket
-
-| Property      | Type              | Example                      |
-| ------------- | ----------------- | ---------------------------- |
-| `productId`   | string            | `"prod-001"`                 |
-| `productName` | string            | `"Classic White Tee"`        |
-| `category`    | string            | `"men"`                      |
-| `timestamp`   | string (ISO 8601) | `"2026-02-22T10:01:00.000Z"` |
+| Event                             | Services              | Triggered when                                                                      |
+| --------------------------------- | --------------------- | ----------------------------------------------------------------------------------- |
+| `Page Viewed`                     | Amplitude + LogRocket | Every call to `trackPageView()` (supplements Amplitude autocapture)                 |
+| `User Login`                      | Amplitude + LogRocket | User successfully authenticates (`AuthContext`)                                     |
+| `Login Attempted`                 | All                   | Login form is submitted or a dev-mode user button is clicked (`LoginPage`)          |
+| `Login Failed`                    | All                   | Login throws an error (`LoginPage`)                                                 |
+| `Navigated to Home`               | All                   | Home page mounts (`HomePage`)                                                       |
+| `Navigated to About`              | All                   | About page mounts (`AboutPage`)                                                     |
+| `Navigated to Profile`            | All                   | Profile page mounts (`ProfilePage`)                                                 |
+| `Product Card Clicked`            | All                   | A product card is clicked in the product grid (`ProductCard`)                       |
+| `Product Selected`                | Amplitude + LogRocket | Product detail page loads its data (`ProductDetailPage`)                            |
+| `Add to Cart`                     | Amplitude + LogRocket | User clicks "Add to Cart" on a product detail page (`ProductDetailPage`)            |
+| `Remove from Cart`                | Amplitude + LogRocket | An item is removed from the cart (`CartContext`)                                    |
+| `Cart Quantity Updated`           | All                   | User changes an item's quantity in the cart (`CartContext`)                         |
+| `Cart Cleared`                    | All                   | The entire cart is cleared (`CartContext`)                                          |
+| `Cart Icon Clicked`               | All                   | User clicks the cart icon in the navigation (`AppLayout`)                           |
+| `Search`                          | Amplitude + LogRocket | Search query or filter changes, debounced 300 ms, only when active (`ProductsPage`) |
+| `Sort Changed`                    | All                   | User changes the sort dropdown on the products page (`ProductsPage`)                |
+| `Filter Toggled`                  | All                   | A category, size, or color checkbox is checked or unchecked (`FilterSidebar`)       |
+| `Filter Removed`                  | All                   | A filter badge's X button is clicked (`ProductsPage`)                               |
+| `Checkout Started`                | Amplitude + LogRocket | Checkout page mounts with a non-empty cart (`CheckoutPage`)                         |
+| `Checkout Form Validation Failed` | All                   | Shipping form is submitted with invalid fields (`CheckoutPage`)                     |
+| `Checkout Form Submitted`         | All                   | Shipping form passes validation and user proceeds to payment (`CheckoutPage`)       |
+| `Order Placed`                    | Amplitude + LogRocket | Payment is completed successfully (`PaymentPage`)                                   |
+| `Theme Toggled`                   | All                   | User clicks the light/dark theme toggle in the nav (`AppLayout`)                    |
 
 ---
 
-### `Add to Cart`
+## Amplitude Autocapture Events
 
-Fired when a user adds a product to their cart.
+Tracked automatically — no custom code required.
 
-**Source:** `src/pages/ProductDetailPage.tsx`
-**Trigger:** User clicks "Add to Cart" button
-**Services:** Amplitude, LogRocket
-
-| Property      | Type              | Example                      |
-| ------------- | ----------------- | ---------------------------- |
-| `productId`   | string            | `"prod-001"`                 |
-| `productName` | string            | `"Classic White Tee"`        |
-| `price`       | number (dollars)  | `29.99`                      |
-| `timestamp`   | string (ISO 8601) | `"2026-02-22T10:02:00.000Z"` |
-
----
-
-### `Checkout Started`
-
-Fired when a user navigates to the checkout page with items in their cart.
-
-**Source:** `src/pages/CheckoutPage.tsx`
-**Trigger:** Component mounts with non-empty cart
-**Services:** Amplitude, LogRocket
-
-| Property    | Type              | Example                      |
-| ----------- | ----------------- | ---------------------------- |
-| `cartValue` | number (dollars)  | `89.97`                      |
-| `itemCount` | number            | `3`                          |
-| `timestamp` | string (ISO 8601) | `"2026-02-22T10:03:00.000Z"` |
-
----
-
-### `Order Placed`
-
-Fired when a user successfully completes payment and an order is confirmed.
-
-**Source:** `src/pages/PaymentPage.tsx`
-**Trigger:** Successful payment API response
-**Services:** Amplitude, LogRocket
-
-| Property     | Type              | Example                      |
-| ------------ | ----------------- | ---------------------------- |
-| `orderId`    | string            | `"order-xyz789"`             |
-| `orderValue` | number (dollars)  | `89.97`                      |
-| `itemCount`  | number            | `3`                          |
-| `timestamp`  | string (ISO 8601) | `"2026-02-22T10:04:00.000Z"` |
-
----
-
-### `Search`
-
-Fired when a user searches or filters products (debounced, 300 ms).
-
-**Source:** `src/pages/ProductsPage.tsx`
-**Trigger:** Search query or filter change (only when search/filters are active)
-**Services:** Amplitude, LogRocket
-
-| Property             | Type              | Example                      |
-| -------------------- | ----------------- | ---------------------------- |
-| `query`              | string            | `"blue shirt"`               |
-| `filters.categories` | string[]          | `["men", "unisex"]`          |
-| `filters.sizes`      | string[]          | `["M", "L"]`                 |
-| `filters.colors`     | string[]          | `["blue"]`                   |
-| `filters.minPrice`   | number            | `0`                          |
-| `filters.maxPrice`   | number            | `100`                        |
-| `timestamp`          | string (ISO 8601) | `"2026-02-22T10:00:30.000Z"` |
-
----
-
-### `Page Viewed` (manual supplement)
-
-Fired on pages where Amplitude autocapture page views need to be supplemented or explicitly named. Also sent to LogRocket for session context.
-
-**Sources:** `HomePage.tsx`, `AboutPage.tsx`, `ProfilePage.tsx`
-**Trigger:** Component mounts
-**Services:** Amplitude, LogRocket
-
-| Property    | Type              | Example                          |
-| ----------- | ----------------- | -------------------------------- |
-| `page`      | string            | `"Home"`, `"About"`, `"Profile"` |
-| `timestamp` | string (ISO 8601) | `"2026-02-22T10:00:00.000Z"`     |
-
----
-
-## Automatic Events (Amplitude Autocapture)
-
-These events are tracked automatically by Amplitude's autocapture feature — no custom code required.
-
-| Event                         | Trigger                                |
+| Event                         | Triggered when                         |
 | ----------------------------- | -------------------------------------- |
 | `[Amplitude] Page Viewed`     | Every route change                     |
 | `[Amplitude] Element Clicked` | Any button, link, or clickable element |
-| `[Amplitude] Form Started`    | User focuses first field in a form     |
+| `[Amplitude] Form Started`    | User focuses the first field in a form |
 | `[Amplitude] Form Submitted`  | Form submit action                     |
-| `[Amplitude] Page Left`       | User navigates away or closes tab      |
-| `[Amplitude] File Downloaded` | File download triggered                |
+| `[Amplitude] Page Left`       | User navigates away or closes the tab  |
 
 ---
 
-## User Identification
+## Service-Specific Events
 
-On login, users are identified across services so all subsequent events are associated with the logged-in user.
-
-| Service   | Method                               | Data                                   |
-| --------- | ------------------------------------ | -------------------------------------- |
-| Amplitude | `amplitude.setUserId()` + `Identify` | userId, email, name, avatar, loginTime |
-| LogRocket | `LogRocket.identify()`               | userId, email, name, avatar, loginTime |
-
----
-
-## Purchase Funnel
-
-The following events define the primary conversion funnel tracked in Amplitude:
-
-```
-Search           (ProductsPage)
-    ↓
-Product Selected (ProductDetailPage)
-    ↓
-Add to Cart      (ProductDetailPage)
-    ↓
-Checkout Started (CheckoutPage)
-    ↓
-Order Placed     (PaymentPage)
-```
-
-Configure this funnel in Amplitude under **Analytics → Funnels**.
+| Event                    | Service        | Triggered when                                                                  |
+| ------------------------ | -------------- | ------------------------------------------------------------------------------- |
+| `fingerprint_identified` | Hotjar only    | Fingerprint visitor ID is set at app startup (`setFingerprintId`)               |
+| `user_logged_out`        | Hotjar only    | User logs out (`resetUser`)                                                     |
+| Exception capture        | LogRocket only | `captureError` is called with an `Error` object (exported but currently unused) |

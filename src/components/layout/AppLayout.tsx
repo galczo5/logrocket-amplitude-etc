@@ -12,6 +12,7 @@ import {
 import { useAuth } from '@/context/AuthContext';
 import { useCart } from '@/context/CartContext';
 import { useTheme } from '@/context/ThemeContext';
+import { trackEvent } from '@/lib/analytics';
 
 export default function AppLayout() {
   const location = useLocation();
@@ -60,11 +61,23 @@ export default function AppLayout() {
           </NavigationMenu>
 
           <div className="ml-auto flex items-center gap-3">
-            <Button variant="ghost" size="icon" onClick={toggleTheme} aria-label="Toggle theme">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => {
+                toggleTheme();
+                trackEvent('Theme Toggled', { newTheme: theme === 'light' ? 'dark' : 'light' });
+              }}
+              aria-label="Toggle theme"
+            >
               {theme === 'light' ? <MoonIcon className="size-5" /> : <SunIcon className="size-5" />}
             </Button>
 
-            <Link to="/checkout" className="relative p-2">
+            <Link
+              to="/checkout"
+              className="relative p-2"
+              onClick={() => trackEvent('Cart Icon Clicked', { itemCount: totalItems })}
+            >
               <ShoppingCartIcon className="size-5" />
               {totalItems > 0 && (
                 <Badge className="absolute -top-1 -right-1 size-5 p-0 flex items-center justify-center text-xs">

@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
-import { trackPageView } from '@/lib/analytics';
+import { trackEvent } from '@/lib/analytics';
 
 const TECH_STACK = [
   { layer: 'Frontend', tech: 'React 19 + TypeScript + Vite' },
@@ -38,7 +38,7 @@ const NOTES = [
 
 export default function AboutPage() {
   useEffect(() => {
-    trackPageView('About', '/about');
+    trackEvent('Navigated to About', { route: '/about' });
   }, []);
 
   return (

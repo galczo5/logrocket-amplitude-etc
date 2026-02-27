@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from 'react';
+import { trackRemoveFromCart, trackEvent } from '@/lib/analytics';
 
 export interface CartItem {
   productId: string;
@@ -55,6 +56,10 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   function removeItem(productId: string, size: string, color: string) {
     const key = itemKey(productId, size, color);
+    const item = items.find((i) => itemKey(i.productId, i.size, i.color) === key);
+    if (item) {
+      trackRemoveFromCart(productId, item.name, item.price);
+    }
     setItems((prev) => prev.filter((i) => itemKey(i.productId, i.size, i.color) !== key));
   }
 
@@ -64,10 +69,21 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       removeItem(productId, size, color);
       return;
     }
+    const item = items.find((i) => itemKey(i.productId, i.size, i.color) === key);
+    if (item) {
+      trackEvent('Cart Quantity Updated', {
+        productId,
+        productName: item.name,
+        oldQuantity: item.quantity,
+        newQuantity: quantity
+      });
+    }
     setItems((prev) => prev.map((i) => (itemKey(i.productId, i.size, i.color) === key ? { ...i, quantity } : i)));
   }
 
   function clearCart() {
+    const cartTotal = items.reduce((sum, i) => sum + i.price * i.quantity, 0);
+    trackEvent('Cart Cleared', { itemCount: items.length, totalPrice: cartTotal / 100 });
     setItems([]);
   }
 

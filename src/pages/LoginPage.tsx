@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router';
 import { useAuth } from '@/context/AuthContext';
+import { trackEvent } from '@/lib/analytics';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -27,11 +28,13 @@ export default function LoginPage() {
     }
     setError('');
     setLoading(true);
+    trackEvent('Login Attempted', { method: 'email' });
     try {
       await login(email, password);
       navigate(from, { replace: true });
     } catch {
       setError('Login failed. Please try again.');
+      trackEvent('Login Failed', { method: 'email' });
     } finally {
       setLoading(false);
     }
@@ -40,11 +43,13 @@ export default function LoginPage() {
   async function handleDevLogin(userId: string) {
     setError('');
     setDevLoadingId(userId);
+    trackEvent('Login Attempted', { method: 'dev', userId });
     try {
       await devLogin(userId);
       navigate(from, { replace: true });
     } catch {
       setError('Login failed. Please try again.');
+      trackEvent('Login Failed', { method: 'dev', userId });
     } finally {
       setDevLoadingId(null);
     }

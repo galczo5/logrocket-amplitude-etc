@@ -7,7 +7,7 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
-import { trackCheckoutStarted } from '@/lib/analytics';
+import { trackCheckoutStarted, trackEvent } from '@/lib/analytics';
 import { useCart } from '@/context/CartContext';
 
 const US_STATES = [
@@ -135,8 +135,14 @@ export default function CheckoutPage() {
     const errs = validate(form);
     if (Object.keys(errs).length > 0) {
       setErrors(errs);
+      trackEvent('Checkout Form Validation Failed', { errorFields: Object.keys(errs) });
       return;
     }
+    trackEvent('Checkout Form Submitted', {
+      cartValue: total / 100,
+      itemCount: items.length,
+      shippingState: form.state
+    });
     navigate('/checkout/payment', { state: { shipping: form } });
   }
 

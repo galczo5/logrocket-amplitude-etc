@@ -9,7 +9,7 @@ import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select'
 import ProductCard from '@/components/ProductCard';
 import FilterSidebar, { type FilterValues } from '@/components/FilterSidebar';
 import { api } from '@/lib/api';
-import { trackSearch } from '@/lib/analytics';
+import { trackSearch, trackEvent } from '@/lib/analytics';
 import type { Product } from '@/types/product';
 
 const EMPTY_FILTERS: FilterValues = {
@@ -117,6 +117,7 @@ export default function ProductsPage() {
   }
 
   function removeFilter(type: string, value?: string) {
+    trackEvent('Filter Removed', { filterType: type, value });
     if (type === 'category') setFilters((f) => ({ ...f, categories: f.categories.filter((c) => c !== value) }));
     else if (type === 'size') setFilters((f) => ({ ...f, sizes: f.sizes.filter((s) => s !== value) }));
     else if (type === 'color') setFilters((f) => ({ ...f, colors: f.colors.filter((c) => c !== value) }));
@@ -151,7 +152,15 @@ export default function ProductsPage() {
             onChange={(e) => setSearch(e.target.value)}
             className="max-w-xs"
           />
-          <NativeSelect value={sort} onChange={(e) => setSort(e.target.value)} className="w-52">
+          <NativeSelect
+            value={sort}
+            onChange={(e) => {
+              const v = e.target.value;
+              trackEvent('Sort Changed', { sort: v || 'none' });
+              setSort(v);
+            }}
+            className="w-52"
+          >
             <NativeSelectOption value="">Sort by</NativeSelectOption>
             <NativeSelectOption value="price-asc">Price: Low to High</NativeSelectOption>
             <NativeSelectOption value="price-desc">Price: High to Low</NativeSelectOption>

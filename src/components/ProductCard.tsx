@@ -2,6 +2,7 @@ import { Link } from 'react-router';
 import { StarIcon } from 'lucide-react';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { trackEvent } from '@/lib/analytics';
 import type { Product } from '@/types/product';
 
 function formatPrice(cents: number) {
@@ -14,7 +15,18 @@ interface ProductCardProps {
 
 export default function ProductCard({ product }: ProductCardProps) {
   return (
-    <Link to={`/products/${product.id}`} className="group block">
+    <Link
+      to={`/products/${product.id}`}
+      className="group block"
+      onClick={() =>
+        trackEvent('Product Card Clicked', {
+          productId: product.id,
+          productName: product.name,
+          category: product.category,
+          price: product.price / 100
+        })
+      }
+    >
       <Card className="h-full overflow-hidden gap-0 py-0 transition-shadow group-hover:shadow-md">
         <div className="aspect-[2/3] overflow-hidden bg-muted">
           <img
