@@ -36,29 +36,33 @@ export const setUserProperties = (properties: Record<string, unknown>) => {
   logRocketLib.setUserContext(properties);
 };
 
+let _fingerprintData: { visitorId: string; confidence: number } | null = null;
+
+export const getFingerprintData = () => _fingerprintData;
+
 /**
  * Set fingerprint visitor ID as anonymous identifier across all analytics services.
  * Called once at app startup for anonymous tracking before user login.
  */
 export const setFingerprintId = (visitorId: string, confidence: number) => {
+  _fingerprintData = { visitorId, confidence };
+  amplitudeLib.setUserId(visitorId);
   amplitudeLib.setUserProperties({
     fingerprintVisitorId: visitorId,
     fingerprintConfidence: confidence
   });
-  logRocketLib.setUserContext({
+  logRocketLib.identify(visitorId, {
     fingerprintVisitorId: visitorId,
     fingerprintConfidence: confidence
   });
   // Hotjar/Contentsquare identify for visitor tagging
   if (typeof window !== 'undefined') {
-    (window as { _uxa?: unknown[][] })._uxa ??= [];
-    (window as { _uxa?: unknown[][] })._uxa!.push([
-      'trackEvent',
-      {
-        name: 'fingerprint_identified',
-        properties: { fingerprint_visitor_id: visitorId, fingerprint_confidence: confidence }
-      }
-    ]);
+    // Hotjar identify
+    const w = window as { hj?: (...args: unknown[]) => void; _uxa?: unknown[][] };
+    w.hj?.('identify', visitorId, { fingerprint_confidence: confidence });
+    // Contentsquare identify
+    w._uxa ??= [];
+    w._uxa!.push(['setHashedUserId', visitorId]);
   }
 };
 
@@ -94,6 +98,14 @@ export const trackPageView = (pageName: string, route: string) => {
     route,
     timestamp: new Date().toISOString()
   });
+  if (typeof window !== 'undefined') {
+    const w = window as { hj?: (...args: unknown[]) => void; _uxa?: unknown[][] };
+    // Hotjar SPA page change
+    w.hj?.('stateChange', route);
+    // Contentsquare page view
+    w._uxa ??= [];
+    w._uxa!.push(['trackPageview', route]);
+  }
 };
 
 /**

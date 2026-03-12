@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router';
 import { useAuth } from '@/context/AuthContext';
 import { api } from '@/lib/api';
-import { trackEvent } from '@/lib/analytics';
+import { trackEvent, getFingerprintData } from '@/lib/analytics';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -48,6 +48,7 @@ export default function ProfilePage() {
   const navigate = useNavigate();
   const [orders, setOrders] = useState<Order[]>([]);
   const [loading, setLoading] = useState(true);
+  const fingerprint = getFingerprintData();
 
   useEffect(() => {
     if (!isAuthenticated) {
@@ -92,6 +93,30 @@ export default function ProfilePage() {
             <Button variant="outline" className="w-full mt-2" onClick={handleSignOut}>
               Sign Out
             </Button>
+          </CardContent>
+        </Card>
+
+        <Card className="border-dashed border-yellow-400 bg-yellow-50 dark:bg-yellow-950/20">
+          <CardHeader className="pb-2">
+            <CardTitle className="text-xs font-mono text-yellow-700 dark:text-yellow-400 uppercase tracking-wider">
+              Debug — Analytics IDs
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="flex flex-col gap-2 text-xs font-mono">
+            {fingerprint ? (
+              <>
+                <div>
+                  <p className="text-muted-foreground">Fingerprint ID</p>
+                  <p className="break-all text-foreground">{fingerprint.visitorId}</p>
+                </div>
+                <div>
+                  <p className="text-muted-foreground">Confidence</p>
+                  <p className="text-foreground">{(fingerprint.confidence * 100).toFixed(0)}%</p>
+                </div>
+              </>
+            ) : (
+              <p className="text-muted-foreground italic">Fingerprint not yet resolved</p>
+            )}
           </CardContent>
         </Card>
       </div>

@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Link, Outlet, useLocation } from 'react-router';
 import { ShoppingCartIcon, UserIcon, LogOutIcon, SunIcon, MoonIcon } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
@@ -12,10 +13,14 @@ import {
 import { useAuth } from '@/context/AuthContext';
 import { useCart } from '@/context/CartContext';
 import { useTheme } from '@/context/ThemeContext';
-import { trackEvent } from '@/lib/analytics';
+import { trackEvent, trackPageView } from '@/lib/analytics';
 
 export default function AppLayout() {
   const location = useLocation();
+
+  useEffect(() => {
+    trackPageView(document.title, location.pathname);
+  }, [location.pathname]);
   const { isAuthenticated, user, logout } = useAuth();
   const { totalItems } = useCart();
   const { theme, toggleTheme } = useTheme();
