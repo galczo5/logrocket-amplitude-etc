@@ -15,7 +15,10 @@ export const captureMessage = (
   properties?: Record<string, unknown>
 ) => {
   if (KEYS.LOGROCKET_APP_ID) {
-    LogRocket.captureMessage(name, level, properties);
+    LogRocket.captureMessage(name, {
+      tags: { level },
+      extra: properties as Record<string, string | number | boolean>
+    });
   }
 };
 
@@ -25,7 +28,7 @@ export const captureMessage = (
 export const captureException = (error: Error, context?: Record<string, unknown>) => {
   if (KEYS.LOGROCKET_APP_ID) {
     LogRocket.captureException(error, {
-      contexts: context
+      extra: context as Record<string, string | number | boolean>
     });
   }
 };
@@ -35,7 +38,7 @@ export const captureException = (error: Error, context?: Record<string, unknown>
  */
 export const identify = (userId: string, traits?: Record<string, unknown>) => {
   if (KEYS.LOGROCKET_APP_ID) {
-    LogRocket.identify(userId, traits);
+    LogRocket.identify(userId, traits as Record<string, string | number | boolean>);
   }
 };
 

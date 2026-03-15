@@ -29,8 +29,7 @@ export function initializeAnalytics() {
         autocapture: {
           pageViews: true,
           formInteractions: true,
-          fileDownloads: true,
-          pageLeaves: true
+          fileDownloads: true
         }
       });
       console.log('[Analytics] Amplitude initialized with autocapture');
